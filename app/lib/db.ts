@@ -20,6 +20,7 @@ export type Lesson = {
     title: string;
     duration: string;
     videoUrl: string;
+    description?: string; // Added optional property
 };
 
 export type Membership = {

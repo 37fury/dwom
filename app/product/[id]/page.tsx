@@ -45,7 +45,13 @@ export default async function ProductPage({ params }: { params: { id: string } }
                         {product.currency} {product.price}<span className={styles.period}>/month</span>
                     </div>
 
-                    <PurchaseButton />
+                    <PurchaseButton
+                        productTitle={product.title}
+                        price={product.price}
+                        currency={product.currency}
+                    >
+                        Get Access Now
+                    </PurchaseButton>
 
                     <div className={styles.guarantee}>
                         Authorized by dwom • Cancel anytime
