@@ -1,0 +1,68 @@
+.footer {
+    background-color: var(--color-text-primary);
+    color: #fff;
+    padding: 80px 0 40px;
+    margin-top: auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 48px;
+}
+
+.brand {
+    max-width: 300px;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+.tagline {
+    color: #a1a1a1;
+    font-size: 16px;
+}
+
+.links {
+    display: flex;
+    gap: 80px;
+    flex-wrap: wrap;
+}
+
+.column h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #fff;
+}
+
+.column a {
+    display: block;
+    color: #a1a1a1;
+    margin-bottom: 12px;
+    font-size: 15px;
+    transition: color 0.2s;
+}
+
+.column a:hover {
+    color: #fff;
+}
+
+.bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 32px;
+    color: #666;
+    font-size: 14px;
+}

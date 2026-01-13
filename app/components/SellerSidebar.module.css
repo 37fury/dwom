@@ -1,0 +1,54 @@
+.sidebar {
+    width: 240px;
+    background: #0f172a; /* Darker bg for seller mode distinction */
+    border-right: 1px solid #1e293b;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: white;
+    margin-bottom: 48px;
+    display: block;
+}
+
+.section {
+    margin-bottom: 32px;
+}
+
+.sectionTitle {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.link {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 6px;
+    color: #cbd5e1;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    transition: all 0.2s;
+}
+
+.link:hover {
+    background-color: #1e293b;
+    color: white;
+}
+
+.active {
+    background-color: #3b82f6;
+    color: white;
+    font-weight: 600;
+}

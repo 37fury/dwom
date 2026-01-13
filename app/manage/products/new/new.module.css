@@ -1,0 +1,104 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 32px;
+}
+
+.form {
+    background: #111;
+    padding: 32px;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+.formGroup {
+    margin-bottom: 24px;
+}
+
+.formGroup label {
+    display: block;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    background: #000;
+    border: 1px solid #333;
+    padding: 12px;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.input:focus,
+.textarea:focus {
+    border-color: var(--color-brand-orange);
+}
+
+.row {
+    display: flex;
+    gap: 16px;
+}
+
+.btnPrimary {
+    width: 100%;
+    background: var(--color-brand-orange);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Success State */
+.success {
+    text-align: center;
+    padding: 48px;
+    background: #111;
+    border-radius: 12px;
+    border: 1px solid #333;
+    max-width: 400px;
+    margin: 80px auto;
+}
+
+.icon {
+    width: 64px;
+    height: 64px;
+    background: #10b981;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin: 0 auto 24px;
+}
+
+.success h2 {
+    margin-bottom: 8px;
+}
+
+.success p {
+    color: #888;
+    margin-bottom: 24px;
+}
+
+.btnSecondary {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+}

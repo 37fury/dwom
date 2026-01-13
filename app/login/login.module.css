@@ -1,0 +1,94 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg-subtle);
+}
+
+.card {
+    background: white;
+    padding: 48px;
+    border-radius: var(--radius-xl);
+    width: 100%;
+    max-width: 440px;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--color-brand-orange);
+    margin-bottom: 24px;
+    display: inline-block;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--color-text-primary);
+}
+
+.subtitle {
+    color: var(--color-text-secondary);
+    margin-bottom: 32px;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btnGoogle {
+    background: white;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+}
+
+.btnGoogle:hover {
+    background: #f9f9f9;
+    border-color: #d1d1d1;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+.btnEmail {
+    background: var(--color-text-primary);
+    color: white;
+    border: 1px solid transparent;
+}
+
+.btnEmail:hover {
+    background: #2a2a2a;
+}
+
+.disclaimer {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.disclaimer a {
+    text-decoration: underline;
+}
