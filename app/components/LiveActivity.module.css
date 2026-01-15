@@ -1,0 +1,82 @@
+.widget {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    max-width: 400px;
+    background: white;
+    padding: 16px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 50;
+    border: 1px solid #e2e8f0;
+}
+
+.widget.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pulse {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 10px rgba(249, 115, 22, 0);
+    }
+}
+
+.content {
+    flex: 1;
+    font-size: 14px;
+    color: #0f172a;
+    line-height: 1.4;
+}
+
+.content strong {
+    color: #f97316;
+    font-weight: 600;
+}
+
+.product {
+    display: block;
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+.time {
+    font-size: 12px;
+    color: #64748b;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .widget {
+        left: 16px;
+        right: 16px;
+        max-width: none;
+        bottom: 80px;
+        /* Account for mobile nav if present */
+    }
+}

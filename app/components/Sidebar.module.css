@@ -1,54 +1,308 @@
 .sidebar {
-    width: 240px;
-    background: white;
-    border-right: 1px solid var(--color-border);
+    width: 260px;
+    background: linear-gradient(180deg, #fefefe 0%, #f8fafc 100%);
+    border-right: 1px solid #e2e8f0;
     display: flex;
     flex-direction: column;
-    padding: 24px;
+    padding: 24px 16px;
     height: 100vh;
     position: sticky;
     top: 0;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: 800;
-    letter-spacing: -1px;
-    color: var(--color-brand-orange);
-    margin-bottom: 48px;
+/* Logo */
+.logoLink {
+    padding: 0 8px;
+    margin-bottom: 32px;
     display: block;
+    text-decoration: none;
+}
+
+.logoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.logoText {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f97316;
+    font-family: var(--font-heading);
+    letter-spacing: -1.5px;
+}
+
+.tagline {
+    font-size: 9px;
+    font-weight: 600;
+    color: #94a3b8;
+    letter-spacing: 0.3px;
+    line-height: 1;
+    margin-top: 2px;
+    text-transform: uppercase;
+}
+
+/* Navigation */
+.nav {
+    flex: 1;
+    overflow-y: auto;
 }
 
 .section {
-    margin-bottom: 32px;
+    margin-bottom: 28px;
 }
 
 .sectionTitle {
-    font-size: 12px;
+    font-size: 11px;
     text-transform: uppercase;
-    color: var(--color-text-secondary);
-    margin-bottom: 12px;
+    color: #94a3b8;
+    margin-bottom: 8px;
+    padding: 0 12px;
     letter-spacing: 0.5px;
+    font-weight: 600;
 }
 
-.link {
-    display: block;
-    padding: 10px 12px;
-    border-radius: var(--radius-sm);
-    color: var(--color-text-secondary);
+/* Nav Links */
+.navLink {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    color: #64748b;
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 4px;
-    transition: all 0.2s;
+    transition: all 0.15s ease;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
 }
 
-.link:hover {
-    background-color: var(--color-bg-subtle);
-    color: var(--color-text-primary);
+.navLink:hover {
+    background: rgba(0, 0, 0, 0.04);
+    color: #334155;
 }
 
-.active {
-    background-color: #fff0eb;
-    color: var(--color-brand-orange);
+.navLink:hover .navIcon {
+    color: #334155;
+}
+
+.navIcon {
+    color: #94a3b8;
+    flex-shrink: 0;
+    transition: color 0.15s;
+}
+
+.navLabel {
+    flex: 1;
+}
+
+.navBadge {
+    font-size: 11px;
     font-weight: 600;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+/* Active State */
+.active {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.08) 0%, rgba(249, 115, 22, 0.04) 100%);
+    color: #ea580c;
+    font-weight: 600;
+}
+
+.active .navIcon {
+    color: #f97316;
+}
+
+.active .navBadge {
+    background: rgba(249, 115, 22, 0.1);
+    color: #ea580c;
+}
+
+.activeIndicator {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 20px;
+    background: linear-gradient(180deg, #f97316, #ea580c);
+    border-radius: 0 3px 3px 0;
+}
+
+/* Admin Link */
+.adminLink {
+    margin-top: 12px;
+    padding-top: 16px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.adminShield {
+    color: #94a3b8;
+    transition: color 0.15s;
+}
+
+.adminLink:hover .adminShield,
+.adminLink.active .adminShield {
+    color: #f97316;
+}
+
+/* Seller Link */
+.sellerLink {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: white !important;
+}
+
+.sellerLink:hover {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+}
+
+.sellerLink .navIcon {
+    color: #f97316;
+}
+
+.chevron {
+    color: rgba(255, 255, 255, 0.5);
+    transition: transform 0.2s;
+}
+
+.sellerLink:hover .chevron {
+    transform: translateX(4px);
+}
+
+/* Sign Out */
+.signOutBtn {
+    font-family: inherit;
+}
+
+.signOutBtn:hover {
+    background: rgba(239, 68, 68, 0.08);
+    color: #dc2626;
+}
+
+.signOutBtn:hover .navIcon {
+    color: #dc2626;
+}
+
+/* Footer */
+.sidebarFooter {
+    margin-top: auto;
+    padding-top: 16px;
+}
+
+.footerCard {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.footerCard:hover {
+    transform: translateY(-2px);
+}
+
+.footerIcon {
+    font-size: 24px;
+}
+
+.footerContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.footerTitle {
+    font-size: 13px;
+    font-weight: 700;
+    color: #92400e;
+}
+
+.footerText {
+    font-size: 11px;
+    color: #a16207;
+}
+
+/* Mobile Controls */
+.mobileToggle {
+    display: none;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 2000;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #334155;
+    font-size: 20px;
+    padding: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, opacity 0.3s ease, left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scrollHidden {
+    transform: translateY(-200%);
+    opacity: 0;
+}
+
+.mobileToggle:hover {
+    background: #f8fafc;
+}
+
+.mobileToggle:active {
+    transform: scale(0.95);
+}
+
+.backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+@media (max-width: 768px) {
+    .mobileToggle {
+        display: flex;
+    }
+
+    .mobileToggle.toggleOpen {
+        left: 232px;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 1001;
+        transform: translateX(-100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 280px;
+        box-shadow: 4px 0 32px rgba(0, 0, 0, 0.15);
+    }
+
+    .open {
+        transform: translateX(0);
+    }
+
+    .backdrop {
+        display: block;
+    }
 }

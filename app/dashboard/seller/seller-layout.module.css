@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.mainContent {
+    flex: 1;
+    padding: 32px;
+    background: #f8fafc;
+    min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+    .mainContent {
+        padding-top: 80px;
+        /* Push content down to avoid overlapping with hamburger */
+    }
+}

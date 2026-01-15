@@ -1,11 +1,22 @@
+import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import styles from './sell.module.css';
 
-export default function SellPage() {
+import { createClient } from '@/utils/supabase/server';
+
+export default async function SellPage() {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (user) {
+        redirect('/dashboard/seller');
+    }
+
     return (
         <main className={styles.darkTheme}>
-            <Navbar />
+            <Navbar user={user} />
 
             {/* Hero Section */}
             <section className={styles.hero}>
@@ -20,8 +31,8 @@ export default function SellPage() {
                             Get paid in Cedis, Naira, or Crypto.
                         </p>
                         <div className={styles.actions}>
-                            <button className={styles.btnPrimary}>Start Selling for Free</button>
-                            <button className={styles.btnSecondary}>View Pricing</button>
+                            <Link href="/login" className={styles.btnPrimary}>Start Selling for Free</Link>
+                            <Link href="#" className={styles.btnSecondary}>View Pricing</Link>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,5 @@
 import { db, Lesson } from '../../lib/db';
 import VideoPlayer from '../../components/VideoPlayer';
-import ReviewForm from '../../components/ReviewForm';
-import ReviewList from '../../components/ReviewList';
 
 export default async function CoursePage({
     params,
@@ -49,10 +47,7 @@ export default async function CoursePage({
             </p>
 
             <div style={{ marginTop: '48px', paddingTop: '32px', borderTop: '1px solid #e2e8f0' }}>
-                <div style={{ marginBottom: '32px' }}>
-                    <ReviewForm />
-                </div>
-                {product.reviewsList && <ReviewList reviews={product.reviewsList} />}
+                {/* Reviews removed from Course Viewer for now */}
             </div>
         </div>
     );

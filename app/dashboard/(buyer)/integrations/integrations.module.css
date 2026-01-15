@@ -1,0 +1,215 @@
+.container {
+    max-width: 800px;
+    width: 100%;
+    padding-bottom: 48px;
+}
+
+.heading {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.subheading {
+    font-size: 15px;
+    color: #64748b;
+    margin-bottom: 32px;
+}
+
+/* Grid */
+.grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Card */
+.card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.2s;
+}
+
+.card:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    flex-shrink: 0;
+}
+
+.cardInfo h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 4px;
+}
+
+.cardInfo p {
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* Connected Badge */
+.connectedBadge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px !important;
+    border-radius: 12px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+
+.dot {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Connect Button */
+.btnConnect {
+    width: 100%;
+    padding: 14px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btnConnect:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+.btnConnect:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+/* Card connected state */
+.cardConnected {
+    border-color: #a5f3fc;
+    background: linear-gradient(135deg, #f0fdfa 0%, #ecfeff 100%);
+}
+
+/* WhatsApp specific */
+.whatsappConnected {
+    border-color: #bbf7d0;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+}
+
+/* Discord specific */
+.discordConnected {
+    border-color: #c7d2fe;
+    background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+}
+
+/* Footer actions for card */
+.cardFooter {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.disconnectBtn {
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #dc2626;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.disconnectBtn:hover {
+    background: #fef2f2;
+}
+
+.manageBtn {
+    padding: 8px 16px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.manageBtn:hover {
+    background: white;
+    border-color: #cbd5e1;
+}
+
+/* Status indicators section */
+.statusSection {
+    margin-top: 40px;
+    padding: 24px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-radius: 16px;
+    color: white;
+}
+
+.statusTitle {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.statusGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.statusItem {
+    text-align: center;
+}
+
+.statusValue {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.statusLabel {
+    font-size: 12px;
+    opacity: 0.7;
+}

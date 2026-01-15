@@ -1,18 +1,60 @@
-import { db } from '../../../lib/db';
-import CustomerList from '../../../components/CustomerList';
+import { db } from '@/app/lib/db';
+import styles from './customers.module.css';
 
 export default async function CustomersPage() {
-    // In a real app we'd get the logged in userId
-    const customers = await db.getCustomers('u1');
+    const user = await db.getUser();
+    if (!user) return <div>Unauthorized</div>;
+
+    const customers = await db.getCustomers(user.id);
 
     return (
-        <div>
-            <div style={{ marginBottom: '32px' }}>
-                <h1 style={{ fontSize: '24px', fontWeight: 'bold', color: '#0f172a', marginBottom: '8px' }}>Customers</h1>
-                <p style={{ color: '#64748b' }}>Manage your students and customers.</p>
-            </div>
+        <div className={styles.container}>
+            <header className={styles.header}>
+                <h1 className={styles.title}>Customers</h1>
+                <p className={styles.subtitle}>People who have purchased your products</p>
+            </header>
 
-            <CustomerList customers={customers} />
+            {customers.length === 0 ? (
+                <div className={styles.emptyState}>
+                    <p>No customers yet. Share your products to get started!</p>
+                </div>
+            ) : (
+                <div className={styles.tableWrapper}>
+                    <table className={styles.table}>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Joined</th>
+                                <th>Orders</th>
+                                <th>Total Spent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {customers.map((customer) => (
+                                <tr key={customer.id}>
+                                    <td>
+                                        <div className={styles.userCell}>
+                                            <div className={styles.avatar}>
+                                                {customer.avatarUrl ? (
+                                                    <img src={customer.avatarUrl} alt={customer.name} />
+                                                ) : (
+                                                    <span>{customer.name.charAt(0)}</span>
+                                                )}
+                                            </div>
+                                            <span className={styles.name}>{customer.name}</span>
+                                        </div>
+                                    </td>
+                                    <td>{customer.email}</td>
+                                    <td>{customer.joinedDate}</td>
+                                    <td>{customer.productsPurchased}</td>
+                                    <td className={styles.amount}>GH₵{customer.totalSpent.toFixed(2)}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            )}
         </div>
     );
 }

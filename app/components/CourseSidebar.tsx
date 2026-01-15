@@ -3,6 +3,7 @@
 import { CourseModule } from '../lib/db';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import { ArrowLeft } from 'lucide-react';
 
 export default function CourseSidebar({
     modules,
@@ -17,7 +18,9 @@ export default function CourseSidebar({
     return (
         <aside style={{ width: '320px', background: 'white', borderRight: '1px solid #e2e8f0', height: '100vh', display: 'flex', flexDirection: 'column', overflowY: 'auto' }}>
             <div style={{ padding: '24px', borderBottom: '1px solid #e2e8f0' }}>
-                <Link href="/dashboard" style={{ fontSize: '12px', color: '#64748b', textDecoration: 'none', marginBottom: '8px', display: 'block' }}>&larr; Back to Dashboard</Link>
+                <Link href="/dashboard" style={{ fontSize: '12px', color: '#64748b', textDecoration: 'none', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <ArrowLeft size={14} /> Back to Dashboard
+                </Link>
                 <h3 style={{ fontSize: '18px', fontWeight: 'bold' }}>Course Content</h3>
                 <div style={{ marginTop: '8px', height: '4px', background: '#f1f5f9', borderRadius: '2px', overflow: 'hidden' }}>
                     <div style={{ width: '15%', height: '100%', background: '#f97316' }}></div>

@@ -12,6 +12,10 @@
     transition: all 0.3s ease;
 }
 
+.navbarHidden {
+    transform: translateY(-100%);
+}
+
 .navContainer {
     height: 100%;
     display: flex;
@@ -26,12 +30,29 @@
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: 800;
-    letter-spacing: -1px;
-    color: var(--color-brand-orange);
+    text-decoration: none;
+    position: relative;
+    z-index: 1002;
 }
 
+.logoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tagline {
+    font-size: 8px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    /* Or a specific color if needed, typically lighter/smaller */
+    letter-spacing: 0.5px;
+    line-height: 1;
+    margin-top: 2px;
+    white-space: nowrap;
+}
+
+/* Desktop Links */
 .links {
     display: flex;
     gap: 24px;
@@ -42,11 +63,24 @@
     font-weight: 500;
     color: var(--color-text-secondary);
     transition: color 0.2s;
+    text-decoration: none;
 }
 
 .links a:hover,
 .links a.active {
     color: var(--color-text-primary);
+}
+
+.rightActions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.authButtons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
 .loginBtn {
@@ -57,8 +91,165 @@
     padding: 8px 16px;
     border-radius: var(--radius-full);
     transition: background 0.2s;
+    text-decoration: none;
 }
 
 .loginBtn:hover {
     background: #e5e5e5;
+}
+
+/* Hamburger Menu Toggle */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1002;
+    border-radius: 50%;
+    transition: background 0.2s ease;
+}
+
+.hamburger:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.hamburger span {
+    width: 20px;
+    height: 2px;
+    background: #f97316;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.hamburger.open span:first-child {
+    transform: rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+/* Mobile Menu Overlay */
+.mobileMenu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    padding: 30% 24px;
+    z-index: 1001;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.mobileMenuOpen {
+    transform: translateY(0);
+}
+
+.mobileLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    text-align: center;
+}
+
+.mobileLinks a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: #0f172a;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.mobileLinks a:hover {
+    color: var(--color-brand-orange);
+    transform: translateX(4px);
+}
+
+.mobileLinks a.mobileActive {
+    color: #0f172a;
+}
+
+.mobileAuthBtn {
+    font-size: 18px;
+    color: #0f172a;
+    font-weight: 700;
+    transition: color 0.2s ease;
+}
+
+.mobileAuthBtn:hover {
+    color: var(--color-brand-orange);
+}
+
+.divider {
+    width: 50%;
+    border: 0;
+    border-top: 1px solid #cbd5e1;
+}
+
+.mobileAuthGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    align-items: center;
+}
+
+.mobileAuthBtn {
+    font-size: 18px;
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.mobileSignup {
+    background: black;
+    color: white !important;
+    padding: 12px 32px;
+    padding: 12px 32px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.mobileSignup:hover {
+    background: #334155;
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+
+    .links,
+    .authButtons {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .mobileMenu {
+        display: block;
+    }
 }

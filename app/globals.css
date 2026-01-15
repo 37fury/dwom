@@ -1,22 +1,36 @@
 :root {
-  /* Brand Colors */
-  --color-brand-orange: #ff4f12;
-  --color-brand-hover: #e0430e;
+  /* Core Palette */
+  --brand-orange: #ff4f12;
+  --brand-hover: #e0430e;
 
-  /* Neutrals */
-  --color-text-primary: #0f0f0f;
-  --color-text-secondary: #666666;
-  --color-bg-light: #ffffff;
-  --color-bg-subtle: #f7f7f8;
-  --color-border: #e6e6e6;
+  /* Light Theme (Default) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f7f8;
+  --bg-tertiary: #eeeeee;
+  --text-primary: #0f0f0f;
+  --text-secondary: #666666;
+  --text-muted: #a1a1a1;
+  --border-color: #e6e6e6;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --header-bg: rgba(255, 255, 255, 0.8);
+  --bg-brand-subtle: #fff0eb;
+}
 
-  /* Dark Mode equivalents (for seller page mostly) */
-  --color-dark-bg: #0f0f0f;
-  --color-dark-surface: #1a1a1a;
-  --color-dark-text: #ffffff;
-  --color-dark-text-muted: #a1a1a1;
 
-  /* Spacing */
+
+/* Helpers for mapping to old variable names if needed, 
+   but ideally we switch to new semantic names below */
+:root {
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-hover: var(--brand-hover);
+
+  --color-bg-light: var(--bg-primary);
+  --color-bg-subtle: var(--bg-secondary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border: var(--border-color);
+
+  /* Spacing & Radius (Unchanged) */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
@@ -25,21 +39,13 @@
   --spacing-2xl: 48px;
   --spacing-3xl: 64px;
 
-  /* Border Radius */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 20px;
   --radius-xl: 32px;
   --radius-full: 9999px;
 
-  /* Typography */
   --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 * {
@@ -51,12 +57,15 @@
 html,
 body {
   max-width: 100vw;
+  max-width: 100vw;
   overflow-x: hidden;
   font-family: var(--font-family-sans);
-  background-color: var(--color-bg-light);
-  color: var(--color-text-primary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -69,6 +78,15 @@ button {
   border: none;
   background: none;
   font-family: inherit;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+button:active {
+  transform: scale(0.98);
 }
 
 /* Utilities */
@@ -97,20 +115,31 @@ button {
 
 .btn-primary:hover {
   background-color: var(--color-brand-hover);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 79, 18, 0.3);
+  opacity: 1;
+  /* Override global button hover opacity */
 }
 
 .btn-secondary {
   background-color: var(--color-bg-subtle);
   color: var(--color-text-primary);
+  border: 1px solid transparent;
 }
 
 .btn-secondary:hover {
-  background-color: #ededed;
+  background-color: #e2e8f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+  /* Override global button hover opacity */
 }
 
 .text-gradient {
   background: linear-gradient(to right, #ff4f12, #ff8f00);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  padding-right: 0.1em;
+  /* Prevent clipping of last character */
 }

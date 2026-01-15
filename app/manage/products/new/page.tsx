@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import styles from './new.module.css';
+import { CheckCircle } from 'lucide-react';
 
 export default function CreateProductPage() {
     const [published, setPublished] = useState(false);
@@ -14,7 +15,9 @@ export default function CreateProductPage() {
     if (published) {
         return (
             <div className={styles.success}>
-                <div className={styles.icon}>✓</div>
+                <div className={styles.icon} style={{ display: 'flex', justifyContent: 'center' }}>
+                    <CheckCircle size={48} color="#22c55e" />
+                </div>
                 <h2>Product Published!</h2>
                 <p>Your product is now live on the marketplace.</p>
                 <button className={styles.btnSecondary} onClick={() => setPublished(false)}>Create Another</button>

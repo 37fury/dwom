@@ -1,4 +1,5 @@
 import SellerSidebar from '../../components/SellerSidebar';
+import styles from './seller-layout.module.css';
 
 export default function SellerLayout({
     children,
@@ -6,9 +7,9 @@ export default function SellerLayout({
     children: React.ReactNode;
 }) {
     return (
-        <div style={{ display: 'flex' }}>
+        <div className={styles.container}>
             <SellerSidebar />
-            <main style={{ flex: 1, padding: '32px', background: '#f8fafc', minHeight: '100vh' }}>
+            <main className={styles.mainContent}>
                 {children}
             </main>
         </div>

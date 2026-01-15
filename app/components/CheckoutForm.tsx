@@ -13,7 +13,11 @@ type Props = {
 
 export default function CheckoutForm({ productId, productPrice, currency, productTitle }: Props) {
     const router = useRouter();
-    const [method, setMethod] = useState<'momo' | 'card'>('momo');
+    // Crypto State
+    const [cryptoHash, setCryptoHash] = useState('');
+    const USDT_ADDRESS = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t"; // Tron USDT example (Binance Hot Wallet for demo)
+
+    const [method, setMethod] = useState<'momo' | 'card' | 'crypto'>('momo');
     const [loading, setLoading] = useState(false);
 
     // Coupon State
@@ -53,24 +57,46 @@ export default function CheckoutForm({ productId, productPrice, currency, produc
         setLoading(true);
 
         try {
-            // Import dynamically or assume it's passed/imported at top. 
-            // Since this is a client component, we imported `processOrder` at the top (I need to add the import).
-            const { processOrder } = await import('../checkout/actions'); // Dynamic import to avoid build issues if mixed
+            const { processOrder } = await import('../checkout/actions');
 
+            // Handle Crypto Flow
+            if (method === 'crypto') {
+                if (!cryptoHash || cryptoHash.length < 10) {
+                    alert('Please enter a valid Transaction Hash.');
+                    setLoading(false);
+                    return;
+                }
+                const result = await processOrder(productId, 'crypto', {
+                    hash: cryptoHash
+                });
+
+                if (result.success && result.redirectUrl) {
+                    window.location.href = result.redirectUrl;
+                } else {
+                    alert(result.error || 'Crypto order failed. Please contact support.');
+                    setLoading(false);
+                }
+                return;
+            }
+
+            // Paystack Flow
+            // We pass the details, but Paystack handles the actual collection securey on their page.
+            // We mainly need to init the transaction.
             const result = await processOrder(productId, method, {
                 network, phoneNumber, cardNumber
             });
 
-            if (result.success) {
-                router.push(`/checkout/success?orderId=${result.orderId}`);
+            if (result.success && result.authorizationUrl) {
+                // Redirect to Paystack
+                window.location.href = result.authorizationUrl;
             } else {
-                alert('Payment failed. Please try again.');
+                alert(result.error || 'Payment initialization failed. Please try again.');
+                setLoading(false);
             }
 
         } catch (error) {
             console.error(error);
             alert('Payment processing error');
-        } finally {
             setLoading(false);
         }
     };
@@ -124,97 +150,56 @@ export default function CheckoutForm({ productId, productPrice, currency, produc
             </div>
 
             {/* Tabs */}
-            <div style={{ display: 'flex', gap: '16px', marginBottom: '24px', borderBottom: '1px solid #e2e8f0' }}>
-                <button
-                    onClick={() => setMethod('momo')}
-                    style={{
-                        padding: '12px',
-                        borderBottom: method === 'momo' ? '2px solid #f97316' : '2px solid transparent',
-                        color: method === 'momo' ? '#0f172a' : '#64748b',
-                        fontWeight: '500',
-                        background: 'none',
-                        cursor: 'pointer'
-                    }}
-                >
-                    Mobile Money
-                </button>
-                <button
-                    onClick={() => setMethod('card')}
-                    style={{
-                        padding: '12px',
-                        borderBottom: method === 'card' ? '2px solid #f97316' : '2px solid transparent',
-                        color: method === 'card' ? '#0f172a' : '#64748b',
-                        fontWeight: '500',
-                        background: 'none',
-                        cursor: 'pointer'
-                    }}
-                >
-                    Card
-                </button>
+            <div style={{ display: 'flex', gap: '16px', marginBottom: '24px', borderBottom: '1px solid #e2e8f0', flexWrap: 'wrap' }}>
+                <button type="button" onClick={() => setMethod('momo')} style={{ padding: '12px', borderBottom: method === 'momo' ? '2px solid #f97316' : '2px solid transparent', color: method === 'momo' ? '#0f172a' : '#64748b', fontWeight: '500', background: 'none', cursor: 'pointer' }}>Mobile Money</button>
+                <button type="button" onClick={() => setMethod('card')} style={{ padding: '12px', borderBottom: method === 'card' ? '2px solid #f97316' : '2px solid transparent', color: method === 'card' ? '#0f172a' : '#64748b', fontWeight: '500', background: 'none', cursor: 'pointer' }}>Card</button>
+                <button type="button" onClick={() => setMethod('crypto')} style={{ padding: '12px', borderBottom: method === 'crypto' ? '2px solid #f97316' : '2px solid transparent', color: method === 'crypto' ? '#0f172a' : '#64748b', fontWeight: '500', background: 'none', cursor: 'pointer' }}>Crypto (USDT)</button>
             </div>
 
             <form onSubmit={handlePayment}>
-                {method === 'momo' && (
-                    <div style={{ display: 'grid', gap: '16px' }}>
-                        <div>
-                            <label style={{ display: 'block', textTransform: 'uppercase', fontSize: '11px', fontWeight: '700', color: '#64748b', marginBottom: '8px' }}>Network</label>
-                            <select
-                                value={network} onChange={(e) => setNetwork(e.target.value)}
-                                style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1', background: 'white' }}
-                            >
-                                <option value="MTN">MTN Mobile Money</option>
-                                <option value="VOD">Vodafone Cash</option>
-                                <option value="AIR">AirtelTigo Money</option>
-                            </select>
+                {method === 'crypto' && (
+                    <div style={{ marginBottom: '24px', background: '#f0fdf4', padding: '16px', borderRadius: '12px', border: '1px solid #bbf7d0' }}>
+                        <div style={{ textAlign: 'center', marginBottom: '16px' }}>
+                            <div style={{ fontSize: '24px', marginBottom: '8px' }}>₮</div>
+                            <p style={{ fontWeight: 'bold', color: '#15803d' }}>Send USDT (TRC20)</p>
+                            <p style={{ fontSize: '12px', color: '#166534' }}>To the address below:</p>
                         </div>
-                        <div>
-                            <label style={{ display: 'block', textTransform: 'uppercase', fontSize: '11px', fontWeight: '700', color: '#64748b', marginBottom: '8px' }}>Phone Number</label>
-                            <input
-                                type="tel"
-                                placeholder="055 123 4567"
-                                value={phoneNumber}
-                                onChange={(e) => setPhoneNumber(e.target.value)}
-                                required
-                                style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1' }}
-                            />
-                        </div>
-                    </div>
-                )}
 
-                {method === 'card' && (
-                    <div style={{ display: 'grid', gap: '16px' }}>
-                        <div>
-                            <label style={{ display: 'block', textTransform: 'uppercase', fontSize: '11px', fontWeight: '700', color: '#64748b', marginBottom: '8px' }}>Card Number</label>
+                        <div style={{ background: 'white', padding: '12px', borderRadius: '8px', border: '1px dashed #22c55e', fontSize: '12px', fontFamily: 'monospace', wordBreak: 'break-all', textAlign: 'center', marginBottom: '16px', color: '#15803d' }}>
+                            {USDT_ADDRESS}
+                        </div>
+
+                        <div style={{ marginBottom: '8px' }}>
+                            <label style={{ display: 'block', fontSize: '12px', fontWeight: '600', color: '#166534', marginBottom: '4px' }}>Transaction Hash (TXID)</label>
                             <input
                                 type="text"
-                                placeholder="4242 4242 4242 4242"
-                                value={cardNumber}
-                                onChange={(e) => setCardNumber(e.target.value)}
                                 required
-                                style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1' }}
+                                placeholder="Enter transaction hash after sending..."
+                                value={cryptoHash}
+                                onChange={(e) => setCryptoHash(e.target.value)}
+                                style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #86efac', fontSize: '14px' }}
                             />
                         </div>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                            <div>
-                                <label style={{ display: 'block', textTransform: 'uppercase', fontSize: '11px', fontWeight: '700', color: '#64748b', marginBottom: '8px' }}>Expiry</label>
-                                <input type="text" placeholder="MM/YY" style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1' }} />
-                            </div>
-                            <div>
-                                <label style={{ display: 'block', textTransform: 'uppercase', fontSize: '11px', fontWeight: '700', color: '#64748b', marginBottom: '8px' }}>CVC</label>
-                                <input type="text" placeholder="123" style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1' }} />
-                            </div>
-                        </div>
+                        <p style={{ fontSize: '11px', color: '#166534', lineHeight: '1.4' }}>
+                            * Orders are manually verified. Access will be granted within 15 mins of confirmation.
+                        </p>
                     </div>
                 )}
 
-                <div style={{ marginTop: '32px' }}>
+                {method !== 'crypto' && (
+                    <div style={{ marginBottom: '24px', color: '#64748b', fontSize: '14px', lineHeight: '1.5' }}>
+                        You will be redirected to Paystack's secure checkout page to complete your payment via <strong>{method === 'momo' ? 'Mobile Money' : 'Card'}</strong>.
+                    </div>
+                )}
+
+                <div>
                     <button
                         type="submit"
                         disabled={loading}
                         style={{
                             width: '100%',
                             padding: '16px',
-                            background: '#f97316',
+                            background: method === 'crypto' ? '#16a34a' : '#f97316',
                             color: 'white',
                             borderRadius: '8px',
                             fontWeight: '600',
@@ -224,10 +209,10 @@ export default function CheckoutForm({ productId, productPrice, currency, produc
                             border: 'none'
                         }}
                     >
-                        {loading ? 'Processing...' : `Pay ${currency}${finalPrice.toFixed(2)}`}
+                        {loading ? 'Processing...' : method === 'crypto' ? 'Submit Crypto Payment' : `Pay ${currency}${finalPrice.toFixed(2)}`}
                     </button>
                     <p style={{ marginTop: '16px', textAlign: 'center', fontSize: '12px', color: '#94a3b8' }}>
-                        <span role="img" aria-label="lock">🔒</span> Secured by Paystack (Simulated)
+                        <span role="img" aria-label="lock">🔒</span> Secured by {method === 'crypto' ? 'Blockchain' : 'Paystack'}
                     </p>
                 </div>
             </form>

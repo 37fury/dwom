@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styles from './manage.module.css';
+import { ArrowLeft } from 'lucide-react';
 
 export default function SellerLayout({
     children,
@@ -22,7 +23,9 @@ export default function SellerLayout({
 
                     <div className={styles.section}>
                         <span className={styles.sectionTitle}>Switch</span>
-                        <Link href="/dashboard" className={styles.linkBack}>← Back to Buyer</Link>
+                        <Link href="/dashboard" className={styles.linkBack} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <ArrowLeft size={16} /> Back to Buyer
+                        </Link>
                     </div>
                 </nav>
             </aside>

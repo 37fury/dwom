@@ -1,33 +1,40 @@
+'use client';
+
 import Link from 'next/link';
 import styles from './Footer.module.css';
+import { useTheme } from './ThemeProvider';
 
 export default function Footer() {
+    const { theme } = useTheme();
+
     return (
         <footer className={styles.footer}>
             <div className={`container ${styles.container}`}>
                 <div className={styles.top}>
                     <div className={styles.brand}>
-                        <Link href="/" className={styles.brand}>dwom</Link>
+                        <Link href="/" style={{ display: 'inline-block', marginBottom: '1rem' }}>
+                            <span style={{ fontSize: '32px', fontWeight: 'bold', color: '#f97316', fontFamily: 'var(--font-heading)', letterSpacing: '-1px' }}>dwom</span>
+                        </Link>
                         <p className={styles.tagline}>Empowering African creators.</p>
                     </div>
                     <div className={styles.links}>
                         <div className={styles.column}>
                             <h4>Discover</h4>
-                            <Link href="#">Trading</Link>
-                            <Link href="#">Sports</Link>
-                            <Link href="#">Software</Link>
+                            <Link href="/marketplace?category=trading">Trading</Link>
+                            <Link href="/marketplace?category=sports">Sports</Link>
+                            <Link href="/marketplace?category=software">Software</Link>
                         </div>
                         <div className={styles.column}>
                             <h4>Sell</h4>
-                            <Link href="#">Pricing</Link>
-                            <Link href="#">Features</Link>
-                            <Link href="#">Affiliates</Link>
+                            <Link href="/dashboard">Start Selling</Link>
+                            <Link href="/">Features</Link>
+                            <Link href="/dashboard/affiliate">Affiliates</Link>
                         </div>
                         <div className={styles.column}>
                             <h4>Support</h4>
-                            <Link href="#">Help Center</Link>
-                            <Link href="#">Terms</Link>
-                            <Link href="#">Privacy</Link>
+                            <Link href="mailto:support@dwom.com">Help Center</Link>
+                            <Link href="/terms">Terms</Link>
+                            <Link href="/privacy">Privacy</Link>
                         </div>
                     </div>
                 </div>

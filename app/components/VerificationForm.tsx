@@ -1,20 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import { db } from '../lib/db';
+import { submitVerificationAction } from '../dashboard/(buyer)/settings/actions';
 
 export default function VerificationForm({ user }: { user: any }) {
-    const [provider, setProvider] = useState<'Mobile Money' | 'Bank'>('Mobile Money');
-    const [number, setNumber] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [status, setStatus] = useState<'pending' | 'verified' | 'unverified'>(user.kycStatus || 'unverified');
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+    const handleSubmit = async (formData: FormData) => {
         setIsSubmitting(true);
 
-        // Simulate server action
-        const success = await db.submitVerification(user.id, { number, provider });
+        const success = await submitVerificationAction(user.id, formData);
 
         setIsSubmitting(false);
         if (success) {
@@ -47,19 +43,26 @@ export default function VerificationForm({ user }: { user: any }) {
                 To receive payouts, you must verify your identity and add a valid payment method.
             </p>
 
-            <form onSubmit={handleSubmit}>
+            <form action={handleSubmit}>
                 <div style={{ marginBottom: '16px' }}>
-                    <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#475569' }}>Government ID</label>
-                    <div style={{ padding: '32px', border: '2px dashed #cbd5e1', borderRadius: '12px', textAlign: 'center', background: '#f8fafc', color: '#64748b', cursor: 'pointer' }}>
-                        Click to upload Passport or Ghana Card
-                    </div>
+                    <label htmlFor="document" style={{ display: 'block', fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#475569' }}>Government ID</label>
+                    <input
+                        id="document"
+                        name="document"
+                        type="file"
+                        accept="image/*,application/pdf"
+                        required
+                        style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', background: 'white' }}
+                    />
+                    <p style={{ fontSize: '12px', color: '#94a3b8', marginTop: '4px' }}>Upload Passport, Ghana Card, or Driver's License</p>
                 </div>
 
                 <div style={{ marginBottom: '16px' }}>
-                    <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#475569' }}>Payout Method</label>
+                    <label htmlFor="provider" style={{ display: 'block', fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#475569' }}>Payout Method</label>
                     <select
-                        value={provider}
-                        onChange={(e) => setProvider(e.target.value as any)}
+                        id="provider"
+                        name="provider"
+                        defaultValue="Mobile Money"
                         style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', marginBottom: '12px' }}
                     >
                         <option value="Mobile Money">Mobile Money (Momo)</option>
@@ -68,9 +71,9 @@ export default function VerificationForm({ user }: { user: any }) {
 
                     <input
                         type="text"
-                        placeholder={provider === 'Mobile Money' ? 'Enter Momo Number' : 'Enter Account Number'}
-                        value={number}
-                        onChange={(e) => setNumber(e.target.value)}
+                        name="number"
+                        placeholder="Enter Momo Number or Account Number"
+                        required
                         style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1' }}
                     />
                 </div>
@@ -97,3 +100,4 @@ export default function VerificationForm({ user }: { user: any }) {
         </div>
     );
 }
+

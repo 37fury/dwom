@@ -7,9 +7,13 @@
     padding-top: 120px;
     padding-bottom: 80px;
     display: grid;
-    grid-template-columns: 1fr 380px;
-    gap: 48px;
+    grid-template-columns: 1fr 420px;
+    gap: 64px;
     align-items: start;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
 }
 
 /* Main Content */
@@ -27,8 +31,10 @@
     justify-content: center;
     color: #ccc;
     font-weight: 600;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     border: 1px solid var(--color-border);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
 }
 
 .thumbnails {
@@ -85,6 +91,30 @@
     border-radius: var(--radius-xl);
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* Default gap */
+}
+
+/* Add meta styles before featuresList or at end */
+.meta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.metaItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+}
+
+.metaItem strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
 }
 
 .title {
@@ -147,7 +177,7 @@
 .divider {
     border: none;
     border-top: 1px solid var(--color-border);
-    margin: 0 0 24px;
+    margin: 24px 0;
 }
 
 .featuresList li {

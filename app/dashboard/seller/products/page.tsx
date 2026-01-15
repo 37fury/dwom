@@ -3,6 +3,11 @@ import Link from 'next/link';
 
 export default async function ProductsPage() {
     const user = await db.getUser();
+
+    if (!user) {
+        return <div>Please log in to manage products.</div>;
+    }
+
     const products = await db.getSellerProducts(user.id);
 
     return (
