@@ -7,9 +7,15 @@ import ProductImage from './ProductImage';
 import { Users, Star } from 'lucide-react';
 import WishlistButton from './WishlistButton';
 
+// Demo seller IDs - products from these sellers show DEMO badge
+const DEMO_SELLER_IDS = ['demo-seller', 'system', 'admin'];
+
 export default function ProductCard({ product }: { product: Product }) {
     // Deterministic member count based on reviews (avoids hydration mismatch)
     const memberCount = (product.reviews || 0) * 3 + 50;
+
+    // Check if product is a demo
+    const isDemo = (product as any).isDemo || DEMO_SELLER_IDS.includes(product.sellerId || '');
 
     return (
         <div className={styles.cardWrapper}>
@@ -20,6 +26,24 @@ export default function ProductCard({ product }: { product: Product }) {
                         alt={product.title}
                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />
+                    {/* DEMO Badge */}
+                    {isDemo && (
+                        <div style={{
+                            position: 'absolute',
+                            top: '10px',
+                            left: '10px',
+                            background: 'linear-gradient(135deg, #8b5cf6, #6366f1)',
+                            color: 'white',
+                            padding: '4px 10px',
+                            borderRadius: '6px',
+                            fontSize: '11px',
+                            fontWeight: '700',
+                            letterSpacing: '0.5px',
+                            boxShadow: '0 2px 8px rgba(139, 92, 246, 0.4)'
+                        }}>
+                            DEMO
+                        </div>
+                    )}
                 </div>
                 <div className={styles.content}>
                     <div className={styles.header}>
@@ -48,3 +72,4 @@ export default function ProductCard({ product }: { product: Product }) {
         </div>
     );
 }
+
