@@ -7,16 +7,25 @@ export async function updateSession(request: NextRequest) {
         request,
     })
 
+    // Check for required environment variables
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+    if (!supabaseUrl || !supabaseAnonKey) {
+        console.error('Missing Supabase environment variables')
+        return supabaseResponse
+    }
+
     const supabase = createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        supabaseUrl,
+        supabaseAnonKey,
         {
             cookies: {
                 getAll() {
                     return request.cookies.getAll()
                 },
                 setAll(cookiesToSet) {
-                    cookiesToSet.forEach(({ name, value, options }) =>
+                    cookiesToSet.forEach(({ name, value }) =>
                         request.cookies.set(name, value)
                     )
                     supabaseResponse = NextResponse.next({
@@ -30,37 +39,38 @@ export async function updateSession(request: NextRequest) {
         }
     )
 
-    // Do not run Supabase code during static generation
     // Check auth status
-    const {
-        data: { user },
-    } = await supabase.auth.getUser()
+    try {
+        const {
+            data: { user },
+        } = await supabase.auth.getUser()
 
-    if (request.nextUrl.pathname.startsWith('/dashboard') && !user) {
-        const url = request.nextUrl.clone()
-        url.pathname = '/login'
-        return NextResponse.redirect(url)
-    }
+        if (request.nextUrl.pathname.startsWith('/dashboard') && !user) {
+            const url = request.nextUrl.clone()
+            url.pathname = '/login'
+            return NextResponse.redirect(url)
+        }
 
-    if (user) {
-        // Check if banned
-        const { data: profile } = await supabase
-            .from('profiles')
-            .select('is_banned')
-            .eq('id', user.id)
-            .single();
+        if (user) {
+            // Check if banned
+            const { data: profile } = await supabase
+                .from('profiles')
+                .select('is_banned')
+                .eq('id', user.id)
+                .single();
 
-        if (profile?.is_banned) {
-            // Allow them to visit the banned page or sign out, but nothing else
-            if (!request.nextUrl.pathname.startsWith('/banned') && !request.nextUrl.pathname.startsWith('/auth')) {
-                const url = request.nextUrl.clone()
-                url.pathname = '/banned'
-                return NextResponse.redirect(url)
+            if (profile?.is_banned) {
+                if (!request.nextUrl.pathname.startsWith('/banned') && !request.nextUrl.pathname.startsWith('/auth')) {
+                    const url = request.nextUrl.clone()
+                    url.pathname = '/banned'
+                    return NextResponse.redirect(url)
+                }
             }
         }
+    } catch (error) {
+        console.error('Middleware auth error:', error)
     }
-
-    // protected routes logic can go here
 
     return supabaseResponse
 }
+
