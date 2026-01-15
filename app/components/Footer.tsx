@@ -32,14 +32,14 @@ export default function Footer() {
                         </div>
                         <div className={styles.column}>
                             <h4>Support</h4>
-                            <Link href="mailto:support@dwom.com">Help Center</Link>
+                            <Link href="mailto:dwom.store@gmail.com">Contact Us</Link>
                             <Link href="/terms">Terms</Link>
                             <Link href="/privacy">Privacy</Link>
                         </div>
                     </div>
                 </div>
                 <div className={styles.bottom}>
-                    <p>&copy; 2024 dwom Inc. All rights reserved.</p>
+                    <p>&copy; 2025 dwom Inc. All rights reserved.</p>
                 </div>
             </div>
         </footer>
