@@ -7,15 +7,21 @@ import ProductImage from './ProductImage';
 import { Users, Star } from 'lucide-react';
 import WishlistButton from './WishlistButton';
 
-// Demo seller IDs - products from these sellers show DEMO badge
-const DEMO_SELLER_IDS = ['demo-seller', 'system', 'admin'];
+// Known demo product titles - these show DEMO badge
+const DEMO_PRODUCT_TITLES = [
+    'Ultimate Forex Mastery Course',
+    'Accra Tech Community Access',
+    'AfroBeats Production Masterclass',
+    'Ghana Stock Market Guide 2024',
+    'VS Code Pro Setup'
+];
 
 export default function ProductCard({ product }: { product: Product }) {
     // Deterministic member count based on reviews (avoids hydration mismatch)
     const memberCount = (product.reviews || 0) * 3 + 50;
 
-    // Check if product is a demo
-    const isDemo = (product as any).isDemo || DEMO_SELLER_IDS.includes(product.sellerId || '');
+    // Check if product is a demo - by title or isDemo flag
+    const isDemo = (product as any).isDemo || DEMO_PRODUCT_TITLES.includes(product.title);
 
     return (
         <div className={styles.cardWrapper}>
