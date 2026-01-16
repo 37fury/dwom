@@ -49,7 +49,7 @@ export default function SellerSidebar() {
         { href: '/dashboard/seller/products', label: 'Products', icon: Package },
         { href: '/dashboard/seller/payouts', label: 'Payouts', icon: Wallet },
         { href: '/dashboard/seller/promotions', label: 'Promotions', icon: Megaphone },
-        { href: '/dashboard/messages', label: 'Messages', icon: MessageCircle },
+        { href: '/dashboard/seller/messages', label: 'Messages', icon: MessageCircle },
     ];
 
     return (
