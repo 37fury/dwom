@@ -1,7 +1,8 @@
 import { db } from '../../../lib/db';
 import Link from 'next/link';
-import { ArrowLeft, Package, Plus, Edit3, Settings, Star } from 'lucide-react';
+import { ArrowLeft, Package, Plus, Star } from 'lucide-react';
 import styles from './products.module.css';
+import ProductsClient from './ProductsClient';
 
 export default async function ProductsPage() {
     const user = await db.getUser();
@@ -57,58 +58,7 @@ export default async function ProductsPage() {
                 </div>
             </div>
 
-            {products.length === 0 ? (
-                <div className={styles.emptyState}>
-                    <div className={styles.emptyIcon}>
-                        <Package size={40} />
-                    </div>
-                    <h3 className={styles.emptyTitle}>No products yet</h3>
-                    <p className={styles.emptyText}>Create your first digital product to start earning.</p>
-                    <Link href="/dashboard/seller/products/new" className={styles.emptyBtn}>
-                        <Plus size={18} />
-                        Create Your First Product
-                    </Link>
-                </div>
-            ) : (
-                <div className={styles.productGrid}>
-                    {products.map((product) => (
-                        <div key={product.id} className={styles.productCard}>
-                            <div className={styles.productCover}>
-                                <div className={styles.productImage}>
-                                    <Package size={32} />
-                                </div>
-                                <span className={styles.productBadge}>
-                                    {product.category || 'Digital'}
-                                </span>
-                            </div>
-                            <div className={styles.productBody}>
-                                <div className={styles.productInfo}>
-                                    <h3 className={styles.productTitle}>{product.title}</h3>
-                                    <div className={styles.productMeta}>
-                                        <span className={styles.productPrice}>{product.currency}{product.price.toFixed(2)}</span>
-                                        <span className={styles.productReviews}>
-                                            <Star size={12} fill="#fbbf24" color="#fbbf24" />
-                                            {product.reviews || 0} reviews
-                                        </span>
-                                    </div>
-                                </div>
-                                <div className={styles.productActions}>
-                                    <button className={styles.actionBtn}>
-                                        <Edit3 size={16} />
-                                        Edit
-                                    </button>
-                                    <button className={styles.actionBtnSecondary}>
-                                        <Settings size={16} />
-                                        Manage
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            )}
+            <ProductsClient products={products} />
         </div>
     );
 }
-
-

@@ -422,6 +422,97 @@
     box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
 }
 
+.deleteBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    padding: 12px;
+    background: white;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+    color: #dc2626;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.deleteBtn:hover {
+    background: #fef2f2;
+    border-color: #f87171;
+}
+
+.deleteBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Submit Link Modal */
+.submitModal {
+    margin-top: 16px;
+    padding: 16px;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.submitModalContent h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 4px;
+}
+
+.submitModalContent p {
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 12px;
+}
+
+.submitInput {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
+
+.submitInput:focus {
+    outline: none;
+    border-color: #f97316;
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+.submitModalActions {
+    display: flex;
+    gap: 8px;
+}
+
+.cancelBtn {
+    flex: 1;
+    padding: 10px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    color: #64748b;
+    cursor: pointer;
+}
+
+.confirmBtn {
+    flex: 1;
+    padding: 10px;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    color: white;
+    cursor: pointer;
+}
+
 /* Empty State */
 .emptyState {
     background: #f8fafc;

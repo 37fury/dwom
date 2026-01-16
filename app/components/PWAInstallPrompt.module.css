@@ -63,15 +63,17 @@
 }
 
 .iconWrapper {
-    width: 120px;
-    height: 60px;
-    background: white;
-    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 20px;
-    padding: 12px;
+}
+
+.logoText {
+    font-size: 36px;
+    font-weight: 800;
+    color: #f97316;
+    letter-spacing: -1px;
 }
 
 .logo {

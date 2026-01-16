@@ -104,7 +104,7 @@ export default function PWAInstallPrompt() {
                 ) : (
                     <>
                         <div className={styles.iconWrapper}>
-                            <img src="/logo.png" alt="dwom" className={styles.logo} />
+                            <span className={styles.logoText}>dwom</span>
                         </div>
                         <div className={styles.content}>
                             <h3>Install dwom</h3>

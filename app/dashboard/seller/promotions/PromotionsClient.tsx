@@ -19,9 +19,12 @@ import {
     Store,
     GraduationCap,
     Sparkles,
-    Filter
+    Filter,
+    Trash2,
+    MoreVertical
 } from 'lucide-react';
 import { CampaignType } from '../../../lib/db';
+import { useRouter } from 'next/navigation';
 
 // Type icon mapping
 const typeIcons: Record<CampaignType, React.ComponentType<{ size?: number }>> = {
@@ -63,8 +66,13 @@ interface PromotionsClientProps {
     };
 }
 
-export default function PromotionsClient({ campaigns, stats }: PromotionsClientProps) {
+export default function PromotionsClient({ campaigns: initialCampaigns, stats }: PromotionsClientProps) {
     const [activeFilter, setActiveFilter] = useState<CampaignType | 'all'>('all');
+    const [campaigns, setCampaigns] = useState(initialCampaigns);
+    const [submitModalOpen, setSubmitModalOpen] = useState<string | null>(null);
+    const [submissionLink, setSubmissionLink] = useState('');
+    const [deleting, setDeleting] = useState<string | null>(null);
+    const router = useRouter();
 
     const filterTabs: { key: CampaignType | 'all'; label: string }[] = [
         { key: 'all', label: 'All' },
@@ -80,6 +88,42 @@ export default function PromotionsClient({ campaigns, stats }: PromotionsClientP
     const filteredCampaigns = activeFilter === 'all'
         ? campaigns
         : campaigns.filter(c => c.type === activeFilter);
+
+    const handleDownload = (audioUrl: string, title: string) => {
+        const link = document.createElement('a');
+        link.href = audioUrl;
+        link.download = `${title}.mp3`;
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
+    const handleSubmitLink = async (campaignId: string) => {
+        if (!submissionLink.trim()) {
+            alert('Please enter a valid link');
+            return;
+        }
+        // TODO: Implement actual submission to backend
+        alert(`Link submitted: ${submissionLink}`);
+        setSubmitModalOpen(null);
+        setSubmissionLink('');
+    };
+
+    const handleDeleteCampaign = async (campaignId: string) => {
+        if (!confirm('Are you sure you want to delete this campaign? This action cannot be undone.')) {
+            return;
+        }
+        setDeleting(campaignId);
+        try {
+            // TODO: Implement actual delete API call
+            setCampaigns(prev => prev.filter(c => c.id !== campaignId));
+            alert('Campaign deleted successfully');
+        } catch (error) {
+            alert('Failed to delete campaign');
+        }
+        setDeleting(null);
+    };
 
     return (
         <div className={styles.container}>
@@ -268,16 +312,60 @@ export default function PromotionsClient({ campaigns, stats }: PromotionsClientP
                                         {/* Actions */}
                                         <div className={styles.campaignActions}>
                                             {campaignType === 'music' && campaign.audioUrl && (
-                                                <button className={styles.downloadBtn}>
+                                                <button
+                                                    className={styles.downloadBtn}
+                                                    onClick={() => handleDownload(campaign.audioUrl, campaign.title || campaign.songTitle)}
+                                                >
                                                     <Download size={18} />
                                                     Download
                                                 </button>
                                             )}
-                                            <button className={styles.submitBtn}>
+                                            <button
+                                                className={styles.submitBtn}
+                                                onClick={() => setSubmitModalOpen(campaign.id)}
+                                            >
                                                 <ExternalLink size={18} />
                                                 Submit Link
                                             </button>
+                                            <button
+                                                className={styles.deleteBtn}
+                                                onClick={() => handleDeleteCampaign(campaign.id)}
+                                                disabled={deleting === campaign.id}
+                                            >
+                                                <Trash2 size={16} />
+                                            </button>
                                         </div>
+
+                                        {/* Submit Link Modal */}
+                                        {submitModalOpen === campaign.id && (
+                                            <div className={styles.submitModal}>
+                                                <div className={styles.submitModalContent}>
+                                                    <h4>Submit Your Link</h4>
+                                                    <p>Paste the link to your promotion post:</p>
+                                                    <input
+                                                        type="url"
+                                                        placeholder="https://tiktok.com/..."
+                                                        value={submissionLink}
+                                                        onChange={(e) => setSubmissionLink(e.target.value)}
+                                                        className={styles.submitInput}
+                                                    />
+                                                    <div className={styles.submitModalActions}>
+                                                        <button
+                                                            onClick={() => { setSubmitModalOpen(null); setSubmissionLink(''); }}
+                                                            className={styles.cancelBtn}
+                                                        >
+                                                            Cancel
+                                                        </button>
+                                                        <button
+                                                            onClick={() => handleSubmitLink(campaign.id)}
+                                                            className={styles.confirmBtn}
+                                                        >
+                                                            Submit
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             );

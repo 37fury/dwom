@@ -327,6 +327,30 @@
     border-color: #cbd5e1;
 }
 
+.deleteBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    padding: 12px;
+    background: white;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+    color: #dc2626;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.deleteBtn:hover {
+    background: #fef2f2;
+    border-color: #f87171;
+}
+
+.deleteBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .container {
