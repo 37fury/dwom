@@ -1,0 +1,161 @@
+.container {
+    max-width: 1200px;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #64748b;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.backLink:hover {
+    color: #334155;
+}
+
+.header {
+    margin-bottom: 32px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: #64748b;
+}
+
+.productGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.productCard {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.categoryBadge {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #f1f5f9;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.productTitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.productPrice {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 16px;
+}
+
+.productActions {
+    display: flex;
+    gap: 8px;
+}
+
+.viewBtn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #3b82f6;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.viewBtn:hover {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+}
+
+.removeBtn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #dc2626;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.removeBtn:hover {
+    background: #fee2e2;
+    border-color: #f87171;
+}
+
+.removeBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 60px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    color: #94a3b8;
+}
+
+.emptyState h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #334155;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+.emptyState p {
+    font-size: 14px;
+    color: #64748b;
+}
+
+@media (max-width: 768px) {
+    .productGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+}

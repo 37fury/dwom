@@ -1,0 +1,174 @@
+.container {
+    max-width: 800px;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #64748b;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.backLink:hover {
+    color: #334155;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: #64748b;
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    margin-bottom: 24px;
+}
+
+.searchBar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #0f172a;
+}
+
+.searchBar input::placeholder {
+    color: #94a3b8;
+}
+
+.searchBar svg {
+    color: #94a3b8;
+}
+
+.usersList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.userCard {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.userHeader {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.userAvatar {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.userInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.userInfo h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 2px;
+}
+
+.userInfo span {
+    font-size: 13px;
+    color: #64748b;
+    word-break: break-all;
+}
+
+.userMeta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.badge.seller {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.badge.buyer {
+    background: #f3e8ff;
+    color: #7c3aed;
+}
+
+.badge.verified {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.badge.pending {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.badge.active {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.joinedDate {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-left: auto;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 22px;
+    }
+
+    .joinedDate {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 8px;
+    }
+}
