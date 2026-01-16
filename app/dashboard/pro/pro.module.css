@@ -1,7 +1,7 @@
 .container {
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
-    padding: 0 16px 80px 16px;
+    padding: 0 20px 80px 20px;
     overflow-x: hidden;
     box-sizing: border-box;
 }
@@ -9,12 +9,13 @@
 .backLink {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     color: #64748b;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
+    padding: 8px 0;
 }
 
 .backLink:hover {

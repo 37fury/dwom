@@ -7,6 +7,8 @@
     height: 100vh;
     position: sticky;
     top: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /* Logo */
@@ -140,6 +142,24 @@
 .switchLink:hover .chevron {
     transform: translateX(4px);
     color: rgba(255, 255, 255, 0.5);
+}
+
+/* Pro Link Style */
+.proLink {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    color: #92400e !important;
+}
+
+.proLink:hover {
+    background: linear-gradient(135deg, #fde68a 0%, #fcd34d 100%);
+}
+
+.proLink .navIcon {
+    color: #f59e0b !important;
+}
+
+.proBadge {
+    font-size: 14px;
 }
 
 /* Footer */

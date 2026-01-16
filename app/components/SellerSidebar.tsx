@@ -17,7 +17,8 @@ import {
     ShoppingBag,
     ChevronRight,
     Settings,
-    LogOut
+    LogOut,
+    Crown
 } from 'lucide-react';
 
 export default function SellerSidebar() {
@@ -50,6 +51,7 @@ export default function SellerSidebar() {
         { href: '/dashboard/seller/payouts', label: 'Payouts', icon: Wallet },
         { href: '/dashboard/seller/promotions', label: 'Promotions', icon: Megaphone },
         { href: '/dashboard/seller/messages', label: 'Messages', icon: MessageCircle },
+        { href: '/dashboard/pro', label: 'Go Pro', icon: Crown, isPro: true },
     ];
 
     return (
@@ -87,15 +89,17 @@ export default function SellerSidebar() {
                             const isActive = link.exact
                                 ? pathname === link.href
                                 : pathname.startsWith(link.href);
+                            const isPro = 'isPro' in link && link.isPro;
                             return (
                                 <Link
                                     key={link.href}
                                     href={link.href}
                                     onClick={() => setIsMobileOpen(false)}
-                                    className={`${styles.navLink} ${isActive ? styles.active : ''}`}
+                                    className={`${styles.navLink} ${isActive ? styles.active : ''} ${isPro ? styles.proLink : ''}`}
                                 >
                                     <link.icon size={18} className={styles.navIcon} />
                                     <span className={styles.navLabel}>{link.label}</span>
+                                    {isPro && <span className={styles.proBadge}>✨</span>}
                                     {isActive && <div className={styles.activeIndicator} />}
                                 </Link>
                             );
