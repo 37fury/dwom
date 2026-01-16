@@ -194,8 +194,8 @@
 
 /* Footer */
 .sidebarFooter {
-    margin-top: auto;
-    padding-top: 16px;
+    margin-top: 8px;
+    padding-top: 0;
 }
 
 .footerCard {
