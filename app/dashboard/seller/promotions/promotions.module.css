@@ -456,20 +456,26 @@
 
     .statsGrid {
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 10px;
     }
 
     .statCard {
-        padding: 16px;
+        padding: 14px 16px;
         border-radius: 12px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .statValue {
-        font-size: 24px;
+        font-size: 22px;
+        order: 2;
     }
 
     .statLabel {
-        font-size: 12px;
+        font-size: 13px;
+        order: 1;
     }
 
     .campaignsGrid {
