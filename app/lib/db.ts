@@ -52,6 +52,7 @@ export type User = {
     email: string;
     balance: number;
     memberships: Membership[];
+    role?: 'user' | 'admin';
 
     // Profile Fields
     username?: string;

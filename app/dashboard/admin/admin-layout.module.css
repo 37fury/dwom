@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    min-height: 100vh;
+    background: #0f172a;
+}
+
+.mainContent {
+    flex: 1;
+    padding: 32px;
+    background: #f1f5f9;
+    margin-left: 280px;
+    min-height: 100vh;
+}
+
+@media (max-width: 1024px) {
+    .mainContent {
+        margin-left: 0;
+        padding: 16px;
+        padding-top: 80px;
+    }
+}
