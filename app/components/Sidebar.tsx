@@ -156,23 +156,21 @@ export default function Sidebar() {
                                 <span className={styles.navLabel}>Sign Out</span>
                             </button>
                         </form>
+
+                        {/* Go Pro Card */}
+                        <Link
+                            href="/dashboard/pro"
+                            onClick={() => setIsMobileOpen(false)}
+                            className={styles.proCard}
+                        >
+                            <div className={styles.proIcon}>🚀</div>
+                            <div className={styles.proContent}>
+                                <span className={styles.proTitle}>Go Pro</span>
+                                <span className={styles.proText}>Unlock all features</span>
+                            </div>
+                        </Link>
                     </div>
                 </nav>
-
-                {/* Footer */}
-                <div className={styles.sidebarFooter}>
-                    <Link
-                        href="/dashboard/pro"
-                        onClick={() => setIsMobileOpen(false)}
-                        className={styles.footerCard}
-                    >
-                        <div className={styles.footerIcon}>🚀</div>
-                        <div className={styles.footerContent}>
-                            <span className={styles.footerTitle}>Go Pro</span>
-                            <span className={styles.footerText}>Unlock all features</span>
-                        </div>
-                    </Link>
-                </div>
             </aside>
         </>
     );

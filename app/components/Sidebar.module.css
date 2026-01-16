@@ -207,6 +207,7 @@
     border-radius: 12px;
     cursor: pointer;
     transition: transform 0.2s;
+    text-decoration: none;
 }
 
 .footerCard:hover {
@@ -229,6 +230,45 @@
 }
 
 .footerText {
+    font-size: 11px;
+    color: #a16207;
+}
+
+/* Pro Card (inline in Account section) */
+.proCard {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    margin-top: 12px;
+}
+
+.proCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+}
+
+.proIcon {
+    font-size: 24px;
+}
+
+.proContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.proTitle {
+    font-size: 13px;
+    font-weight: 700;
+    color: #92400e;
+}
+
+.proText {
     font-size: 11px;
     color: #a16207;
 }
