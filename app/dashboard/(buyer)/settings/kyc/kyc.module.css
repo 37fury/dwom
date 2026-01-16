@@ -1,146 +1,417 @@
 .container {
-    padding: 2rem;
-    max-width: 800px;
+    padding: 0;
+    max-width: 700px;
     margin: 0 auto;
 }
 
 .header {
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
 }
 
 .title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 0.5rem;
+    font-size: 28px;
+    font-weight: 800;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
 }
 
 .description {
-    color: #666;
-    font-size: 1rem;
-    line-height: 1.5;
+    color: #64748b;
+    font-size: 15px;
+    line-height: 1.6;
 }
 
+/* Status Cards */
 .statusCard {
-    background: #fff;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    margin-bottom: 2rem;
-    border: 1px solid #eee;
+    background: white;
+    border-radius: 24px;
+    padding: 48px 32px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
 }
 
-.statusHeader {
+.statusIcon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1.5rem;
+    justify-content: center;
+    margin: 0 auto 24px;
 }
 
-.badge {
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-transform: capitalize;
+.statusTitle {
+    font-size: 24px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 12px;
 }
 
-.badge.unverified {
-    background-color: #ffebee;
-    color: #c62828;
+.statusText {
+    font-size: 15px;
+    color: #64748b;
+    max-width: 400px;
+    margin: 0 auto 24px;
+    line-height: 1.6;
 }
 
-.badge.pending {
-    background-color: #fff3e0;
-    color: #ef6c00;
+.verifiedBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 14px;
 }
 
-.badge.verified {
-    background-color: #e8f5e9;
-    color: #2e7d32;
+.progressBar {
+    width: 100%;
+    max-width: 300px;
+    height: 8px;
+    background: #f1f5f9;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto 12px;
+}
+
+.progressFill {
+    height: 100%;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    border-radius: 10px;
+    transition: width 0.3s;
+}
+
+.progressLabel {
+    font-size: 13px;
+    color: #f59e0b;
+    font-weight: 500;
+}
+
+/* Rejection Card */
+.rejectionCard {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 16px;
+    margin-bottom: 24px;
+}
+
+.rejectionIcon {
+    width: 44px;
+    height: 44px;
+    background: #fee2e2;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #dc2626;
+    flex-shrink: 0;
+}
+
+.rejectionContent h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #991b1b;
+    margin-bottom: 4px;
+}
+
+.rejectionContent p {
+    font-size: 14px;
+    color: #b91c1c;
+    margin-bottom: 12px;
+}
+
+.rejectionReason {
+    font-size: 13px;
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    color: #7f1d1d;
+}
+
+/* Form Card */
+.formCard {
+    background: white;
+    border-radius: 24px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+}
+
+.formHeader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 32px;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+}
+
+.formIcon {
+    width: 48px;
+    height: 48px;
+    background: rgba(249, 115, 22, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f97316;
+}
+
+.formHeader h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.formHeader p {
+    font-size: 13px;
+    opacity: 0.7;
 }
 
 .form {
+    padding: 32px;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 24px;
+}
+
+/* Sections */
+.section {
+    padding: 24px;
+    background: #f8fafc;
+    border-radius: 16px;
+}
+
+.sectionTitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.sectionNote {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+/* Form Elements */
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
 }
 
 .formGroup {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.formGroup:last-child {
+    margin-bottom: 0;
 }
 
 .label {
+    font-size: 13px;
     font-weight: 600;
-    color: #333;
-    font-size: 0.95rem;
+    color: #334155;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .input,
 .select {
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.2s;
+    padding: 14px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 15px;
+    background: white;
+    transition: all 0.2s;
+    box-sizing: border-box;
 }
 
 .input:focus,
 .select:focus {
-    border-color: var(--brand-orange);
+    border-color: #f97316;
     outline: none;
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
 }
 
-.fileInputWrapper {
-    border: 2px dashed #ddd;
-    border-radius: 12px;
-    padding: 2rem;
+/* Upload Grid */
+.uploadGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.uploadBox {
+    position: relative;
+}
+
+.fileInput {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.uploadLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 24px 16px;
+    border: 2px dashed #e2e8f0;
+    border-radius: 16px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
     text-align: center;
+    color: #64748b;
+}
+
+.uploadLabel:hover {
+    border-color: #f97316;
+    background: #fff7ed;
+}
+
+.uploadLabel span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.uploadLabel small {
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+.uploadSuccess {
+    color: #22c55e;
+}
+
+/* Privacy Note */
+.privacyNote {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: #f0f9ff;
+    border-radius: 12px;
+    font-size: 13px;
+    color: #0369a1;
+    line-height: 1.5;
+}
+
+.privacyNote svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Submit Button */
+.submitBtn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.2s;
 }
 
-.fileInputWrapper:hover {
-    border-color: var(--brand-orange);
-    background-color: #fff8f5;
-}
-
-.submitBtn {
-    background-color: var(--brand-orange);
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: opacity 0.2s;
-    align-self: flex-start;
-}
-
-.submitBtn:hover {
-    opacity: 0.9;
+.submitBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(249, 115, 22, 0.35);
 }
 
 .submitBtn:disabled {
-    background-color: #ccc;
+    background: #94a3b8;
     cursor: not-allowed;
 }
 
+/* Messages */
 .message {
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .message.error {
-    background-color: #ffebee;
-    color: #c62828;
+    background: #fef2f2;
+    color: #dc2626;
 }
 
 .message.success {
-    background-color: #e8f5e9;
-    color: #2e7d32;
+    background: #f0fdf4;
+    color: #16a34a;
+}
+
+/* Badges */
+.badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.badge.unverified {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.badge.pending {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.badge.verified {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .formHeader {
+        padding: 20px 24px;
+    }
+
+    .form {
+        padding: 24px;
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+    }
+
+    .uploadGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 20px;
+    }
 }

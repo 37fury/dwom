@@ -3,10 +3,30 @@
 import { useState } from 'react';
 import { updateProfileAction } from './actions';
 import { User } from '@/app/lib/db';
+import {
+    User as UserIcon,
+    AtSign,
+    FileText,
+    Link as LinkIcon,
+    Upload,
+    Camera,
+    Twitter,
+    Instagram,
+    Youtube,
+    Globe,
+    Check,
+    Shield,
+    Lock,
+    Calendar,
+    Phone,
+    MapPin
+} from 'lucide-react';
+import styles from './profile.module.css';
 
 export default function ProfileForm({ user }: { user: User }) {
     const [loading, setLoading] = useState(false);
     const [msg, setMsg] = useState('');
+    const [profileImage, setProfileImage] = useState<File | null>(null);
 
     async function handleSubmit(formData: FormData) {
         setLoading(true);
@@ -16,101 +36,233 @@ export default function ProfileForm({ user }: { user: User }) {
         setLoading(false);
 
         if (res.success) {
-            setMsg('✅ Profile updated successfully!');
+            setMsg('success');
         } else {
-            setMsg(`❌ Error: ${res.error}`);
+            setMsg(`error:${res.error}`);
         }
     }
 
     return (
-        <form action={handleSubmit} style={{ maxWidth: '600px' }}>
-            <div style={{ marginBottom: '24px' }}>
-                <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Full Name</label>
-                <input
-                    name="full_name"
-                    defaultValue={user.name}
-                    required
-                    className="input"
-                    style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ccc' }}
-                />
+        <form action={handleSubmit} className={styles.form}>
+            {/* Profile Photo Section */}
+            <div className={styles.photoSection}>
+                <div className={styles.photoWrapper}>
+                    <div className={styles.photoPlaceholder}>
+                        {user.avatarUrl ? (
+                            <img src={user.avatarUrl} alt="Profile" className={styles.photo} />
+                        ) : (
+                            <UserIcon size={40} />
+                        )}
+                    </div>
+                    <div className={styles.photoOverlay}>
+                        <Camera size={20} />
+                    </div>
+                </div>
+                <button type="button" className={styles.uploadBtn}>
+                    <Upload size={16} />
+                    Upload Photo
+                </button>
+                <p className={styles.photoHint}>Recommended: Square image, at least 400×400px. Max 5MB.</p>
             </div>
 
-            <div style={{ marginBottom: '24px' }}>
-                <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>
-                    Username (dwom.com/store/...)
-                </label>
-                <input
-                    name="username"
-                    defaultValue={user.username || ''}
-                    required
-                    placeholder="e.g. koficodes"
-                    className="input"
-                    style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ccc' }}
-                />
-                <div style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>
-                    This will be your public store URL.
+            {/* Basic Info Section */}
+            <div className={styles.section}>
+                <h3 className={styles.sectionTitle}>
+                    <UserIcon size={18} />
+                    Basic Information
+                </h3>
+
+                <div className={styles.formGroup}>
+                    <label className={styles.label}>Full Name</label>
+                    <input
+                        name="full_name"
+                        defaultValue={user.name}
+                        required
+                        className={styles.input}
+                        placeholder="Your legal full name"
+                    />
+                </div>
+
+                <div className={styles.formGroup}>
+                    <label className={styles.label}>
+                        <AtSign size={14} />
+                        Username
+                    </label>
+                    <div className={styles.inputWithPrefix}>
+                        <span className={styles.prefix}>dwom.store/</span>
+                        <input
+                            name="username"
+                            defaultValue={user.username || ''}
+                            required
+                            placeholder="yourname"
+                            className={styles.input}
+                        />
+                    </div>
+                    <p className={styles.inputHint}>This will be your public store URL. Choose carefully!</p>
+                </div>
+
+                <div className={styles.formGroup}>
+                    <label className={styles.label}>Email Address</label>
+                    <input
+                        type="email"
+                        value={user.email}
+                        disabled
+                        className={`${styles.input} ${styles.disabled}`}
+                    />
+                    <p className={styles.inputHint}>
+                        <Lock size={12} />
+                        Email cannot be changed
+                    </p>
+                </div>
+
+                <div className={styles.row}>
+                    <div className={styles.formGroup}>
+                        <label className={styles.label}>
+                            <Phone size={14} />
+                            Phone Number
+                        </label>
+                        <input
+                            name="phone"
+                            type="tel"
+                            defaultValue={user.phone || ''}
+                            className={styles.input}
+                            placeholder="024 XXX XXXX"
+                        />
+                    </div>
+                    <div className={styles.formGroup}>
+                        <label className={styles.label}>
+                            <Calendar size={14} />
+                            Date of Birth
+                        </label>
+                        <input
+                            name="dateOfBirth"
+                            type="date"
+                            defaultValue={user.dateOfBirth || ''}
+                            className={styles.input}
+                        />
+                    </div>
+                </div>
+
+                <div className={styles.formGroup}>
+                    <label className={styles.label}>
+                        <MapPin size={14} />
+                        Location
+                    </label>
+                    <input
+                        name="location"
+                        defaultValue={user.location || ''}
+                        className={styles.input}
+                        placeholder="City, Country (e.g. Accra, Ghana)"
+                    />
                 </div>
             </div>
 
-            <div style={{ marginBottom: '24px' }}>
-                <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Bio</label>
-                <textarea
-                    name="bio"
-                    defaultValue={user.bio || ''}
-                    rows={4}
-                    placeholder="Tell us about yourself..."
-                    className="input"
-                    style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ccc' }}
-                />
+            {/* Bio Section */}
+            <div className={styles.section}>
+                <h3 className={styles.sectionTitle}>
+                    <FileText size={18} />
+                    About You
+                </h3>
+
+                <div className={styles.formGroup}>
+                    <label className={styles.label}>Bio</label>
+                    <textarea
+                        name="bio"
+                        defaultValue={user.bio || ''}
+                        rows={4}
+                        placeholder="Tell customers about yourself and what you sell..."
+                        className={styles.textarea}
+                    />
+                    <p className={styles.inputHint}>This appears on your public store page</p>
+                </div>
             </div>
 
-            <h3 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '16px', marginTop: '32px' }}>Social Links</h3>
+            {/* Social Links Section */}
+            <div className={styles.section}>
+                <h3 className={styles.sectionTitle}>
+                    <LinkIcon size={18} />
+                    Social Links
+                </h3>
+                <p className={styles.sectionDesc}>Connect your social accounts to build trust with buyers</p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <div className={styles.socialGrid}>
+                    <div className={styles.socialInput}>
+                        <div className={styles.socialIcon} style={{ background: '#1da1f2' }}>
+                            <Twitter size={16} />
+                        </div>
+                        <input
+                            name="twitter"
+                            defaultValue={user.socialLinks?.twitter || ''}
+                            placeholder="@username"
+                            className={styles.input}
+                        />
+                    </div>
+
+                    <div className={styles.socialInput}>
+                        <div className={styles.socialIcon} style={{ background: 'linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045)' }}>
+                            <Instagram size={16} />
+                        </div>
+                        <input
+                            name="instagram"
+                            defaultValue={user.socialLinks?.instagram || ''}
+                            placeholder="@username"
+                            className={styles.input}
+                        />
+                    </div>
+
+                    <div className={styles.socialInput}>
+                        <div className={styles.socialIcon} style={{ background: '#ff0000' }}>
+                            <Youtube size={16} />
+                        </div>
+                        <input
+                            name="youtube"
+                            defaultValue={user.socialLinks?.youtube || ''}
+                            placeholder="Channel URL"
+                            className={styles.input}
+                        />
+                    </div>
+
+                    <div className={styles.socialInput}>
+                        <div className={styles.socialIcon} style={{ background: '#0f172a' }}>
+                            <Globe size={16} />
+                        </div>
+                        <input
+                            name="website"
+                            defaultValue={user.socialLinks?.website || ''}
+                            placeholder="https://yourwebsite.com"
+                            className={styles.input}
+                        />
+                    </div>
+                </div>
+            </div>
+
+            {/* Admin-Only Info Notice */}
+            <div className={styles.adminNotice}>
+                <Shield size={18} />
                 <div>
-                    <label style={{ display: 'block', marginBottom: '8px', fontSize: '13px' }}>Twitter / X</label>
-                    <input name="twitter" defaultValue={user.socialLinks?.twitter || ''} placeholder="@username" style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} />
-                </div>
-                <div>
-                    <label style={{ display: 'block', marginBottom: '8px', fontSize: '13px' }}>Instagram</label>
-                    <input name="instagram" defaultValue={user.socialLinks?.instagram || ''} placeholder="@username" style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} />
-                </div>
-                <div>
-                    <label style={{ display: 'block', marginBottom: '8px', fontSize: '13px' }}>YouTube</label>
-                    <input name="youtube" defaultValue={user.socialLinks?.youtube || ''} placeholder="Channel URL" style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} />
-                </div>
-                <div>
-                    <label style={{ display: 'block', marginBottom: '8px', fontSize: '13px' }}>Website</label>
-                    <input name="website" defaultValue={user.socialLinks?.website || ''} placeholder="https://" style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} />
+                    <strong>Security Information</strong>
+                    <p>Your date of birth, phone number, and location are visible only to platform administrators for verification and security purposes.</p>
                 </div>
             </div>
 
-            <div style={{ marginBottom: '24px', marginTop: '24px' }}>
-                <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Banner Image URL</label>
-                <input
-                    name="banner_url"
-                    defaultValue={user.bannerUrl || ''}
-                    placeholder="https://imgur.com/..."
-                    className="input"
-                    style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ccc' }}
-                />
-                <div style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>
-                    Paste a direct image link for now.
+            {/* Message */}
+            {msg && (
+                <div className={`${styles.message} ${msg.startsWith('error') ? styles.error : styles.success}`}>
+                    {msg.startsWith('error') ? (
+                        <>❌ {msg.replace('error:', '')}</>
+                    ) : (
+                        <>
+                            <Check size={18} />
+                            Profile updated successfully!
+                        </>
+                    )}
                 </div>
-            </div>
+            )}
 
-            {msg && <div style={{ padding: '12px', background: msg.includes('Error') ? '#fee2e2' : '#dcfce7', color: msg.includes('Error') ? '#991b1b' : '#166534', borderRadius: '6px', marginBottom: '16px' }}>{msg}</div>}
-
-            <button
-                type="submit"
-                disabled={loading}
-                style={{
-                    padding: '12px 24px', background: 'black', color: 'white',
-                    border: 'none', borderRadius: '6px', fontWeight: '600',
-                    cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.7 : 1
-                }}
-            >
-                {loading ? 'Saving...' : 'Save Profile'}
+            {/* Submit Button */}
+            <button type="submit" disabled={loading} className={styles.submitBtn}>
+                <Check size={18} />
+                {loading ? 'Saving...' : 'Save Changes'}
             </button>
         </form>
     );
