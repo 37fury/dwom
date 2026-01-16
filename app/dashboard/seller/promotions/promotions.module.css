@@ -450,8 +450,26 @@
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 0 16px 48px;
+    }
+
     .statsGrid {
         grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .statCard {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .statValue {
+        font-size: 24px;
+    }
+
+    .statLabel {
+        font-size: 12px;
     }
 
     .campaignsGrid {
@@ -473,16 +491,20 @@
     }
 
     .headerContent h1 {
-        font-size: 24px;
+        font-size: 22px;
+        flex-wrap: wrap;
     }
 
     .headerContent p {
-        font-size: 14px;
+        font-size: 13px;
         word-wrap: break-word;
+        overflow-wrap: break-word;
+        line-height: 1.5;
     }
 
     .newCampaignBtn {
         justify-content: center;
+        padding: 12px 20px;
     }
 
     .filterTabs {
@@ -495,5 +517,34 @@
     .filterTab {
         padding: 8px 14px;
         font-size: 12px;
+    }
+
+    .sectionTitle {
+        font-size: 16px;
+    }
+
+    .campaignCard {
+        border-radius: 16px;
+    }
+
+    .campaignBody {
+        padding: 16px;
+    }
+
+    .campaignTitle {
+        font-size: 16px;
+    }
+
+    .emptyState {
+        padding: 40px 24px;
+    }
+
+    .emptyIcon {
+        width: 64px;
+        height: 64px;
+    }
+
+    .emptyTitle {
+        font-size: 16px;
     }
 }
