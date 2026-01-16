@@ -94,7 +94,7 @@ export default async function SellerSettingsPage() {
                 {
                     icon: User,
                     label: 'Account Settings',
-                    description: 'Profile, email, and personal details',
+                    description: 'Your profile and personal info',
                     href: '/dashboard/seller/settings/account',
                     color: '#6366f1'
                 },
