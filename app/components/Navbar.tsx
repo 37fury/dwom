@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
+import ThemeToggle from './ThemeToggle';
 
 export default function Navbar({ user }: { user?: any }) {
     const pathname = usePathname();
@@ -65,6 +66,11 @@ export default function Navbar({ user }: { user?: any }) {
                 </div>
 
                 <div className={styles.rightActions}>
+                    {/* Theme Toggle */}
+                    <div className={styles.themeToggle}>
+                        <ThemeToggle />
+                    </div>
+
                     {/* Desktop Auth Buttons */}
                     <div className={styles.authButtons}>
                         {user ? (
