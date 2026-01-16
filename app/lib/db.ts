@@ -57,6 +57,10 @@ export type User = {
     username?: string;
     bio?: string;
     bannerUrl?: string;
+    avatarUrl?: string;
+    phone?: string;
+    dateOfBirth?: string;
+    location?: string;
     socialLinks?: {
         twitter?: string;
         instagram?: string;
@@ -71,7 +75,8 @@ export type User = {
         salesCount: number;
     };
     listings: string[];
-    kycStatus?: 'pending' | 'verified' | 'unverified';
+    kycStatus?: 'pending' | 'verified' | 'unverified' | 'rejected';
+    kycRejectionReason?: string;
     payoutDetails?: {
         provider: 'Mobile Money' | 'Bank';
         number: string;
