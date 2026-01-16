@@ -36,7 +36,6 @@ export default function PayoutRequestForm({ balance, payoutDetails }: { balance:
 
     return (
         <div className={styles.formCard}>
-            <h3 className={styles.sectionTitle}>Request Withdrawal</h3>
 
             {message && (
                 <div style={{ padding: '0.8rem', borderRadius: '8px', marginBottom: '1rem', background: message.type === 'success' ? '#dcfce7' : '#fef2f2', color: message.type === 'success' ? '#166534' : '#991b1b' }}>

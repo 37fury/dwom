@@ -465,7 +465,7 @@
     }
 
     .statCard {
-        padding: 14px 16px;
+        padding: 16px 20px;
         border-radius: 12px;
         display: flex;
         flex-direction: row;
@@ -473,14 +473,27 @@
         align-items: center;
     }
 
+    .statHeader {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        margin-bottom: 0;
+    }
+
+    .statIcon {
+        width: 40px;
+        height: 40px;
+    }
+
     .statValue {
         font-size: 22px;
-        order: 2;
     }
 
     .statLabel {
-        font-size: 13px;
-        order: 1;
+        font-size: 14px;
+        font-weight: 600;
     }
 
     .campaignsGrid {
