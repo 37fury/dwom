@@ -161,13 +161,17 @@ export default function Sidebar() {
 
                 {/* Footer */}
                 <div className={styles.sidebarFooter}>
-                    <div className={styles.footerCard}>
+                    <Link
+                        href="/dashboard/pro"
+                        onClick={() => setIsMobileOpen(false)}
+                        className={styles.footerCard}
+                    >
                         <div className={styles.footerIcon}>🚀</div>
                         <div className={styles.footerContent}>
                             <span className={styles.footerTitle}>Go Pro</span>
                             <span className={styles.footerText}>Unlock all features</span>
                         </div>
-                    </div>
+                    </Link>
                 </div>
             </aside>
         </>

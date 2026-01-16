@@ -54,6 +54,11 @@ export type User = {
     memberships: Membership[];
     role?: 'user' | 'admin';
 
+    // Pro Subscription
+    isPro?: boolean;
+    proExpiresAt?: string;
+    proPlan?: 'monthly' | 'annual';
+
     // Profile Fields
     username?: string;
     bio?: string;

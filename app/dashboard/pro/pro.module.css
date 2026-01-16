@@ -1,0 +1,289 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 80px;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #64748b;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 32px;
+}
+
+.backLink:hover {
+    color: #334155;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.heroIcon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 0 auto 24px;
+    box-shadow: 0 12px 32px rgba(245, 158, 11, 0.3);
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #64748b;
+    line-height: 1.6;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Pricing Toggle */
+.pricingToggle {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.toggleBtn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.toggleBtn:hover {
+    border-color: #cbd5e1;
+}
+
+.toggleBtn.active {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    border-color: #f59e0b;
+    color: white;
+}
+
+.saveBadge {
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.toggleBtn:not(.active) .saveBadge {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+/* Price Card */
+.priceCard {
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 24px;
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.priceHeader {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.priceCurrency {
+    font-size: 24px;
+    font-weight: 700;
+    color: #64748b;
+}
+
+.priceAmount {
+    font-size: 56px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.pricePeriod {
+    font-size: 18px;
+    color: #94a3b8;
+}
+
+.priceNote {
+    font-size: 14px;
+    color: #22c55e;
+    margin-bottom: 24px;
+}
+
+.subscribeBtn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    border: none;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.subscribeBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.35);
+}
+
+.subscribeBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Benefits Section */
+.benefitsSection {
+    margin-bottom: 48px;
+}
+
+.sectionTitle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 20px;
+}
+
+.benefitsGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.benefitCard {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    transition: all 0.2s;
+}
+
+.benefitCard:hover {
+    border-color: #f59e0b;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.1);
+}
+
+.benefitIcon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.1));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f59e0b;
+    flex-shrink: 0;
+}
+
+.benefitContent {
+    flex: 1;
+}
+
+.benefitContent h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 2px;
+}
+
+.benefitContent p {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.checkIcon {
+    color: #22c55e;
+    flex-shrink: 0;
+}
+
+/* FAQ Section */
+.faqSection {
+    margin-top: 48px;
+}
+
+.faqList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faqItem {
+    padding: 20px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+}
+
+.faqItem h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.faqItem p {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .title {
+        font-size: 26px;
+    }
+
+    .priceCard {
+        padding: 28px;
+    }
+
+    .priceAmount {
+        font-size: 44px;
+    }
+
+    .pricingToggle {
+        flex-direction: column;
+    }
+
+    .toggleBtn {
+        justify-content: center;
+    }
+}
