@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { Crown, ArrowLeft, Check, Zap, Shield, Globe, Palette, FileText, Sparkles } from 'lucide-react';
+import { Crown, ArrowLeft, Check, Zap, Shield, Globe, Palette, FileText, Sparkles, Clock } from 'lucide-react';
 
 const proFeatures = [
+    { icon: Zap, text: 'Express payouts (same-day)' },
     { icon: Globe, text: 'Custom domain connection' },
     { icon: Palette, text: 'Full branding customization' },
     { icon: FileText, text: 'Professional invoices' },
@@ -80,10 +81,10 @@ export default function UpgradePage() {
                     position: 'relative'
                 }}>
                     <div style={{ fontSize: '48px', fontWeight: '800', marginBottom: '4px' }}>
-                        GH₵99<span style={{ fontSize: '18px', fontWeight: '500' }}>/month</span>
+                        GH₵59<span style={{ fontSize: '18px', fontWeight: '500' }}>/month</span>
                     </div>
                     <p style={{ fontSize: '14px', opacity: 0.7 }}>
-                        or GH₵899/year (save 25%)
+                        or GH₵529/year (save 25%)
                     </p>
                 </div>
 
