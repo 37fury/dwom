@@ -1,0 +1,232 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 9998;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.prompt {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 24px 24px 0 0;
+    padding: 32px 24px;
+    z-index: 9999;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.closeBtn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.closeBtn:hover {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.iconWrapper {
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 8px 24px rgba(249, 115, 22, 0.3);
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.content {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.content h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.content p {
+    font-size: 15px;
+    color: #64748b;
+    line-height: 1.5;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.installBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+.installBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
+}
+
+.laterBtn {
+    width: 100%;
+    padding: 14px;
+    background: transparent;
+    color: #64748b;
+    border: none;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.laterBtn:hover {
+    background: #f8fafc;
+    color: #334155;
+}
+
+/* iOS Instructions */
+.iosInstructions {
+    text-align: center;
+}
+
+.iosInstructions h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 20px;
+}
+
+.steps {
+    text-align: left;
+    padding-left: 24px;
+    margin-bottom: 24px;
+}
+
+.steps li {
+    font-size: 15px;
+    color: #334155;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.steps li strong {
+    color: #0f172a;
+}
+
+.shareIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.gotItBtn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.gotItBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.3);
+}
+
+/* Dark Mode */
+[data-theme="dark"] .prompt {
+    background: #1a1a1a;
+}
+
+[data-theme="dark"] .closeBtn {
+    background: #2a2a2a;
+    color: #94a3b8;
+}
+
+[data-theme="dark"] .content h3,
+[data-theme="dark"] .iosInstructions h3 {
+    color: white;
+}
+
+[data-theme="dark"] .steps li {
+    color: #cbd5e1;
+}
+
+[data-theme="dark"] .steps li strong {
+    color: white;
+}

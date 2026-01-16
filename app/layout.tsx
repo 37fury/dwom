@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from './components/ThemeProvider';
 import { WishlistProvider } from './components/WishlistContext';
+import PWAInstallPrompt from './components/PWAInstallPrompt';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -62,6 +63,7 @@ export default function RootLayout({
         <ThemeProvider>
           <WishlistProvider>
             {children}
+            <PWAInstallPrompt />
           </WishlistProvider>
         </ThemeProvider>
       </body>
