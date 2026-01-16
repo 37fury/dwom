@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
     ArrowLeft,
     Crown,
@@ -37,6 +38,7 @@ const sellerBenefits = [
 ];
 
 export default function ProPage() {
+    const router = useRouter();
     const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('annual');
     const [processing, setProcessing] = useState(false);
 
@@ -55,10 +57,10 @@ export default function ProPage() {
 
     return (
         <div className={styles.container}>
-            <Link href="/dashboard" className={styles.backLink}>
+            <button onClick={() => router.back()} className={styles.backLink}>
                 <ArrowLeft size={16} />
-                Back to Dashboard
-            </Link>
+                Go Back
+            </button>
 
             {/* Hero Section */}
             <div className={styles.hero}>

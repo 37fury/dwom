@@ -17,6 +17,9 @@
     margin-top: 8px;
     margin-bottom: 24px;
     padding: 8px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .backLink:hover {
