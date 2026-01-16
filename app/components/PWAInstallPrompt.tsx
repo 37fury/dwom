@@ -108,7 +108,7 @@ export default function PWAInstallPrompt() {
                         </div>
                         <div className={styles.content}>
                             <h3>Install dwom</h3>
-                            <p>Add dwom to your home screen for quick access and a better experience.</p>
+                            <p>#1 Digital Marketplace in Africa. Add to your home screen for quick access.</p>
                         </div>
                         <div className={styles.actions}>
                             <button className={styles.installBtn} onClick={handleInstall}>
