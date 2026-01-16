@@ -1,0 +1,261 @@
+.container {
+    max-width: 900px;
+    width: 100%;
+    padding-bottom: 48px;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #64748b;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    transition: color 0.2s;
+}
+
+.backLink:hover {
+    color: #334155;
+}
+
+/* Header */
+.header {
+    margin-bottom: 32px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #64748b;
+    font-size: 15px;
+}
+
+/* Sections */
+.sections {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+.section {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 24px;
+}
+
+.sectionTitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* Settings Grid */
+.settingsGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.settingCard {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.settingCard:hover {
+    background: #f8fafc;
+}
+
+.settingIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.settingInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.settingLabel {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.settingDesc {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.chevron {
+    color: #cbd5e1;
+    flex-shrink: 0;
+}
+
+.proBadge {
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Info Card */
+.infoCard {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-radius: 20px;
+    padding: 24px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.infoCard::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.infoHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.infoContent {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.infoItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.infoLabel {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.infoValue {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.badge {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.pending {
+    color: #fbbf24;
+}
+
+.upgradeBtn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    color: white;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s;
+    position: relative;
+    z-index: 1;
+}
+
+.upgradeBtn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px 48px;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+
+    .section {
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .settingCard {
+        padding: 12px 8px;
+    }
+
+    .settingIcon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .settingLabel {
+        font-size: 14px;
+    }
+
+    .settingDesc {
+        font-size: 12px;
+    }
+
+    .infoCard {
+        padding: 20px;
+    }
+}

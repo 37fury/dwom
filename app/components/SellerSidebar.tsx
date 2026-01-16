@@ -106,13 +106,13 @@ export default function SellerSidebar() {
                     <div className={styles.section}>
                         <h4 className={styles.sectionTitle}>Account</h4>
                         <Link
-                            href="/dashboard/settings"
+                            href="/dashboard/seller/settings"
                             onClick={() => setIsMobileOpen(false)}
-                            className={`${styles.navLink} ${pathname.startsWith('/dashboard/settings') ? styles.active : ''}`}
+                            className={`${styles.navLink} ${pathname.startsWith('/dashboard/seller/settings') ? styles.active : ''}`}
                         >
                             <Settings size={18} className={styles.navIcon} />
                             <span className={styles.navLabel}>Settings</span>
-                            {pathname.startsWith('/dashboard/settings') && <div className={styles.activeIndicator} />}
+                            {pathname.startsWith('/dashboard/seller/settings') && <div className={styles.activeIndicator} />}
                         </Link>
                         <Link
                             href="/dashboard"
