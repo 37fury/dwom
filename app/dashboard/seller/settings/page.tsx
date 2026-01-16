@@ -94,14 +94,21 @@ export default async function SellerSettingsPage() {
                 {
                     icon: User,
                     label: 'Account Settings',
-                    description: 'Email, password, and profile',
-                    href: '/dashboard/settings',
+                    description: 'Profile, email, and personal details',
+                    href: '/dashboard/seller/settings/account',
                     color: '#6366f1'
                 },
                 {
                     icon: Shield,
+                    label: 'Verification (KYC)',
+                    description: 'Verify identity for withdrawals',
+                    href: '/dashboard/seller/settings/kyc',
+                    color: '#22c55e'
+                },
+                {
+                    icon: Shield,
                     label: 'Security & Privacy',
-                    description: 'Two-factor auth and data',
+                    description: 'Password, 2FA, and data',
                     href: '/dashboard/seller/settings/security',
                     color: '#14b8a6'
                 }
