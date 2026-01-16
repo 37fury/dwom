@@ -15,8 +15,18 @@
     gap: 32px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+    .gridSection {
+        padding-bottom: 60px;
+    }
+
+    .heading {
+        font-size: 20px;
+        margin-bottom: 24px;
+    }
+
     .grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
 }

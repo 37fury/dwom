@@ -84,3 +84,31 @@
     font-weight: 500;
     margin-left: 4px;
 }
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+    .card:hover {
+        transform: none;
+    }
+
+    .content {
+        padding: 16px;
+    }
+
+    .title {
+        font-size: 15px;
+    }
+
+    .price {
+        font-size: 13px;
+    }
+
+    .category {
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+
+    .rating {
+        font-size: 13px;
+    }
+}
