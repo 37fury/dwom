@@ -1,77 +1,240 @@
 .container {
-    max-width: 800px;
+    max-width: 900px;
+    width: 100%;
+    padding-bottom: 48px;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #64748b;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    transition: color 0.2s;
+}
+
+.backLink:hover {
+    color: #334155;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+}
+
+.headerContent h1,
+.title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: #64748b;
+}
+
+/* Stats Grid */
+.statsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+/* Balance Card - Featured */
 .balanceCard {
-    background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-radius: 20px;
+    padding: 28px;
     color: white;
-    padding: 2rem;
-    border-radius: 16px;
-    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.balanceCard::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.balanceHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
 }
 
 .balanceLabel {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-size: 13px;
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+}
+
+.balanceIcon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .balanceAmount {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1px;
 }
 
-.actions {
+/* Stat Cards */
+.statCard {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.2s;
+}
+
+.statCard:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.statHeader {
     display: flex;
-    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
 }
 
-.requestBtn {
-    background: var(--brand-orange);
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: opacity 0.2s;
+.statLabel {
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 500;
 }
 
-.requestBtn:hover {
-    opacity: 0.9;
+.statIcon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.statValue {
+    font-size: 24px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+}
+
+/* Sections */
+.section {
+    margin-bottom: 32px;
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .sectionTitle {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #333;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
+.sectionCount {
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 500;
+    background: #f1f5f9;
+    padding: 6px 12px;
+    border-radius: 8px;
+}
+
+/* Empty State */
+.emptyState {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    padding: 48px 32px;
+    text-align: center;
+}
+
+.emptyIcon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    color: #94a3b8;
+}
+
+.emptyTitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+.emptyText {
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* History List */
 .historyList {
     background: white;
-    border-radius: 12px;
     border: 1px solid #e2e8f0;
+    border-radius: 16px;
     overflow: hidden;
 }
 
 .historyItem {
-    padding: 1.2rem;
-    border-bottom: 1px solid #f1f5f9;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.2s;
 }
 
 .historyItem:last-child {
     border-bottom: none;
+}
+
+.historyItem:hover {
+    background: #fafbfc;
 }
 
 .itemLeft {
@@ -82,135 +245,91 @@
 
 .itemMethod {
     font-weight: 600;
-    color: #1a1a1a;
+    color: #0f172a;
+    font-size: 15px;
 }
 
 .itemDate {
-    font-size: 0.85rem;
-    color: #64748b;
+    font-size: 13px;
+    color: #94a3b8;
 }
 
 .itemRight {
-    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
 }
 
 .itemAmount {
+    font-size: 16px;
     font-weight: 700;
-    font-size: 1.1rem;
     color: #0f172a;
 }
 
 .itemStatus {
-    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
     font-weight: 600;
     text-transform: capitalize;
-    padding: 2px 8px;
-    border-radius: 12px;
 }
 
-.status-paid {
+.status-pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-completed {
     background: #dcfce7;
     color: #166534;
 }
 
-.status-processing {
-    background: #fff7ed;
-    color: #9a3412;
-}
-
 .status-failed {
-    background: #fef2f2;
-    color: #991b1b;
-}
-
-.formCard {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid #e2e8f0;
-    margin-bottom: 2rem;
-}
-
-.formGroup {
-    margin-bottom: 1rem;
-}
-
-.label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: #475569;
-}
-
-.input,
-.select {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    font-size: 1rem;
-}
-
-.input:focus,
-.select:focus {
-    outline: none;
-    border-color: var(--brand-orange);
+    background: #fee2e2;
+    color: #dc2626;
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .container {
-        padding: 0 16px;
+        padding: 0 16px 48px;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+
+    .statsGrid {
+        grid-template-columns: 1fr;
+        gap: 12px;
     }
 
     .balanceCard {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-        padding: 1.5rem;
+        padding: 20px;
     }
 
     .balanceAmount {
-        font-size: 2rem;
+        font-size: 28px;
     }
 
-    .actions {
-        width: 100%;
+    .statCard {
+        padding: 16px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
 
-    .requestBtn {
-        width: 100%;
-        text-align: center;
-    }
-
-    .sectionTitle {
-        font-size: 1.1rem;
+    .statValue {
+        font-size: 20px;
     }
 
     .historyItem {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-        padding: 1rem;
+        padding: 16px;
     }
 
-    .itemRight {
-        text-align: left;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .formCard {
-        padding: 1rem;
-    }
-
-    .input,
-    .select {
-        padding: 0.7rem;
-        font-size: 16px;
-        /* Prevents iOS zoom */
+    .emptyState {
+        padding: 32px 20px;
     }
 }

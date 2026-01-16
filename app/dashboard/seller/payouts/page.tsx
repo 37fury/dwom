@@ -1,4 +1,6 @@
 import { db } from '@/app/lib/db';
+import Link from 'next/link';
+import { ArrowLeft, Wallet, DollarSign, Clock, TrendingUp, CreditCard, CheckCircle2 } from 'lucide-react';
 import styles from './payouts.module.css';
 import PayoutRequestForm from './PayoutForm';
 
@@ -10,22 +12,82 @@ export default async function PayoutsPage() {
 
     return (
         <div className={styles.container}>
-            <h1 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '24px', color: '#0f172a' }}>Payouts</h1>
+            {/* Back Link */}
+            <Link href="/dashboard/seller" className={styles.backLink}>
+                <ArrowLeft size={16} />
+                Back to Dashboard
+            </Link>
 
-            <div className={styles.balanceCard}>
-                <div>
-                    <div className={styles.balanceLabel}>Available Balance</div>
+            {/* Header */}
+            <header className={styles.header}>
+                <div className={styles.headerContent}>
+                    <h1 className={styles.title}>
+                        <Wallet size={28} />
+                        Payouts
+                    </h1>
+                    <p className={styles.subtitle}>Manage your earnings and withdrawal requests.</p>
+                </div>
+            </header>
+
+            {/* Stats Grid */}
+            <div className={styles.statsGrid}>
+                <div className={styles.balanceCard}>
+                    <div className={styles.balanceHeader}>
+                        <span className={styles.balanceLabel}>Available Balance</span>
+                        <div className={styles.balanceIcon}>
+                            <DollarSign size={20} />
+                        </div>
+                    </div>
                     <div className={styles.balanceAmount}>GH₵{user.balance.toFixed(2)}</div>
+                </div>
+                <div className={styles.statCard}>
+                    <div className={styles.statHeader}>
+                        <span className={styles.statLabel}>Pending</span>
+                        <div className={styles.statIcon} style={{ background: 'rgba(251, 191, 36, 0.1)', color: '#f59e0b' }}>
+                            <Clock size={18} />
+                        </div>
+                    </div>
+                    <div className={styles.statValue}>GH₵0.00</div>
+                </div>
+                <div className={styles.statCard}>
+                    <div className={styles.statHeader}>
+                        <span className={styles.statLabel}>Total Withdrawn</span>
+                        <div className={styles.statIcon} style={{ background: 'rgba(34, 197, 94, 0.1)', color: '#22c55e' }}>
+                            <TrendingUp size={18} />
+                        </div>
+                    </div>
+                    <div className={styles.statValue}>GH₵0.00</div>
                 </div>
             </div>
 
-            <PayoutRequestForm balance={user.balance} payoutDetails={user.payoutDetails} />
-
+            {/* Withdrawal Form Section */}
             <div className={styles.section}>
-                <h3 className={styles.sectionTitle}>Transaction History</h3>
+                <div className={styles.sectionHeader}>
+                    <h3 className={styles.sectionTitle}>
+                        <CreditCard size={20} />
+                        Request Withdrawal
+                    </h3>
+                </div>
+                <PayoutRequestForm balance={user.balance} payoutDetails={user.payoutDetails} />
+            </div>
+
+            {/* Transaction History */}
+            <div className={styles.section}>
+                <div className={styles.sectionHeader}>
+                    <h3 className={styles.sectionTitle}>
+                        <Clock size={20} />
+                        Transaction History
+                    </h3>
+                    <span className={styles.sectionCount}>{history.length} transaction{history.length !== 1 ? 's' : ''}</span>
+                </div>
+
                 {history.length === 0 ? (
-                    <div style={{ padding: '2rem', textAlign: 'center', color: '#64748b', background: 'white', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
-                        No transactions yet.
+                    <div className={styles.emptyState}>
+                        <div className={styles.emptyIcon}>
+                            <CheckCircle2 size={32} />
+                        </div>
+                        <h4 className={styles.emptyTitle}>No transactions yet</h4>
+                        <p className={styles.emptyText}>Your payout history will appear here.</p>
                     </div>
                 ) : (
                     <div className={styles.historyList}>
@@ -49,3 +111,4 @@ export default async function PayoutsPage() {
         </div>
     );
 }
+
