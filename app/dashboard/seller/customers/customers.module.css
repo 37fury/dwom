@@ -21,12 +21,14 @@
     background: white;
     border-radius: 12px;
     border: 1px solid #e2e8f0;
-    overflow: hidden;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .table {
     width: 100%;
     border-collapse: collapse;
+    min-width: 500px;
 }
 
 .table th {
@@ -37,6 +39,7 @@
     font-weight: 600;
     color: #475569;
     font-size: 0.9rem;
+    white-space: nowrap;
 }
 
 .table td {
@@ -67,6 +70,7 @@
     font-size: 0.8rem;
     font-weight: 600;
     color: #64748b;
+    flex-shrink: 0;
 }
 
 .avatar img {
@@ -92,4 +96,45 @@
     border-radius: 12px;
     border: 1px solid #e2e8f0;
     color: #64748b;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .header {
+        margin-bottom: 1.5rem;
+    }
+
+    .title {
+        font-size: 1.4rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .tableWrapper {
+        margin: 0 -16px;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+
+    .table th,
+    .table td {
+        padding: 0.8rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .avatar {
+        width: 28px;
+        height: 28px;
+    }
+
+    .emptyState {
+        padding: 2rem;
+    }
 }
