@@ -319,12 +319,128 @@
 }
 
 @media (max-width: 640px) {
+    .container {
+        padding: 0 16px 48px;
+    }
+
+    .header {
+        margin-bottom: 24px;
+    }
+
+    .headerTop {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .title {
+        font-size: 22px;
+        gap: 8px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .todayBadge {
+        align-self: flex-start;
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    /* Stats */
+    .statsGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .statCard {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .statValue {
+        font-size: 22px;
+    }
+
+    .statLabel {
+        font-size: 12px;
+    }
+
+    .statIcon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+    }
+
+    .statTrend {
+        font-size: 11px;
+    }
+
+    /* Chart */
+    .chartSection {
+        padding: 20px 16px;
+        border-radius: 16px;
+    }
+
+    .chartHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .chartTitle {
+        font-size: 16px;
+    }
+
+    .chartPeriod {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .periodBtn {
+        white-space: nowrap;
+        padding: 5px 10px;
+        font-size: 11px;
+    }
+
+    .chartArea {
+        height: 160px;
+        gap: 4px;
+    }
+
+    .barLabel {
+        font-size: 9px;
+    }
+
+    /* Actions */
+    .actionsSection {
+        margin-top: 24px;
+    }
+
+    .sectionTitle {
+        font-size: 16px;
+    }
+
     .actionsGrid {
         grid-template-columns: 1fr;
+        gap: 12px;
     }
 
     .actionCard {
         flex-direction: row;
         justify-content: flex-start;
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .actionIcon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .actionLabel {
+        font-size: 14px;
+        text-align: left;
     }
 }
