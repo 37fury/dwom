@@ -1,6 +1,6 @@
-import { login, signup } from './actions'
-import styles from './login.module.css'
 import { Shield, Zap, Lock } from 'lucide-react'
+import styles from './login.module.css'
+import LoginForm from './LoginForm'
 
 import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
@@ -56,53 +56,10 @@ export default async function LoginPage(props: {
                     <h2 className={styles.title}>Welcome back</h2>
                     <p className={styles.subtitle}>Sign in to access your courses, communities, and purchases.</p>
 
-                    {searchParams.message && (
-                        <div className={styles.errorMessage}>
-                            {searchParams.message}
-                        </div>
-                    )}
-
-                    <form>
-                        <div className={styles.inputGroup}>
-                            <label htmlFor="email" className={styles.label}>Email</label>
-                            <input
-                                id="email"
-                                name="email"
-                                type="email"
-                                required
-                                className={styles.input}
-                                placeholder="name@example.com"
-                            />
-                        </div>
-                        <div className={styles.inputGroup}>
-                            <label htmlFor="password" className={styles.label}>Password</label>
-                            <input
-                                id="password"
-                                name="password"
-                                type="password"
-                                required
-                                className={styles.input}
-                                placeholder="••••••••"
-                            />
-                        </div>
-                        {redirectTo && (
-                            <input type="hidden" name="redirect" value={redirectTo} />
-                        )}
-                        <div className={styles.buttonGroup}>
-                            <button formAction={login} className={styles.buttonPrimary}>Log in</button>
-                            <button formAction={signup} className={styles.buttonSecondary}>Create Account</button>
-                        </div>
-                        <a href="/forgot-password" style={{
-                            display: 'block',
-                            textAlign: 'center',
-                            marginTop: '16px',
-                            fontSize: '14px',
-                            color: '#f97316',
-                            textDecoration: 'none'
-                        }}>
-                            Forgot Password?
-                        </a>
-                    </form>
+                    <LoginForm
+                        redirectTo={redirectTo}
+                        message={searchParams.message}
+                    />
 
                     {/* Trust Indicators */}
                     <div className={styles.trustBadges}>
@@ -124,3 +81,4 @@ export default async function LoginPage(props: {
         </div>
     )
 }
+
