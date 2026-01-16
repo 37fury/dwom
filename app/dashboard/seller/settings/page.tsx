@@ -44,7 +44,8 @@ export default async function SellerSettingsPage() {
                     label: 'Branding',
                     description: 'Colors, fonts, and styling',
                     href: '/dashboard/seller/settings/branding',
-                    color: '#ec4899'
+                    color: '#ec4899',
+                    badge: 'Pro'
                 }
             ]
         },
@@ -70,7 +71,8 @@ export default async function SellerSettingsPage() {
                     label: 'Tax & Invoices',
                     description: 'Tax settings and invoice templates',
                     href: '/dashboard/seller/settings/tax',
-                    color: '#64748b'
+                    color: '#64748b',
+                    badge: 'Pro'
                 }
             ]
         },
