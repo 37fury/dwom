@@ -6,6 +6,11 @@
     box-sizing: border-box;
 }
 
+.container * {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
 .backLink {
     display: inline-flex;
     align-items: center;
