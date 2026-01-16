@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import HCaptcha from '@hcaptcha/react-hcaptcha';
+// import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { Eye, EyeOff } from 'lucide-react';
 import { login, signup } from './actions';
 import styles from './login.module.css';
@@ -12,19 +12,8 @@ interface LoginFormProps {
 }
 
 export default function LoginForm({ redirectTo, message }: LoginFormProps) {
-    const [captchaToken, setCaptchaToken] = useState<string>('');
     const [error, setError] = useState<string | null>(message || null);
     const [showPassword, setShowPassword] = useState(false);
-    const captchaRef = useRef<HCaptcha>(null);
-
-    const handleCaptchaVerify = (token: string) => {
-        setCaptchaToken(token);
-        setError(null);
-    };
-
-    const handleCaptchaExpire = () => {
-        setCaptchaToken('');
-    };
 
     return (
         <>
@@ -85,27 +74,11 @@ export default function LoginForm({ redirectTo, message }: LoginFormProps) {
                     <input type="hidden" name="redirect" value={redirectTo} />
                 )}
 
-                {/* Hidden captcha token for form submission */}
-                <input type="hidden" name="captchaToken" value={captchaToken} />
-
-                {/* hCaptcha Widget */}
-                <div style={{ display: 'flex', justifyContent: 'center', margin: '20px 0' }}>
-                    <HCaptcha
-                        ref={captchaRef}
-                        sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || '10000000-ffff-ffff-ffff-000000000001'}
-                        onVerify={handleCaptchaVerify}
-                        onExpire={handleCaptchaExpire}
-                        theme="light"
-                    />
-                </div>
-
                 <div className={styles.buttonGroup}>
                     <button
                         type="submit"
                         formAction={login}
                         className={styles.buttonPrimary}
-                        disabled={!captchaToken}
-                        style={{ opacity: !captchaToken ? 0.6 : 1 }}
                     >
                         Log in
                     </button>
@@ -113,8 +86,6 @@ export default function LoginForm({ redirectTo, message }: LoginFormProps) {
                         type="submit"
                         formAction={signup}
                         className={styles.buttonSecondary}
-                        disabled={!captchaToken}
-                        style={{ opacity: !captchaToken ? 0.6 : 1 }}
                     >
                         Create Account
                     </button>
@@ -133,4 +104,5 @@ export default function LoginForm({ redirectTo, message }: LoginFormProps) {
         </>
     );
 }
+
 
