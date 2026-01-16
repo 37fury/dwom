@@ -330,6 +330,37 @@
 }
 
 @media (max-width: 640px) {
+    .container {
+        padding: 0 16px 48px;
+    }
+
+    .pageHeader {
+        margin-bottom: 24px;
+    }
+
+    .pageTitle {
+        font-size: 22px;
+    }
+
+    .pageSubtitle {
+        font-size: 14px;
+    }
+
+    .section {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .sectionHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .sectionTitle {
+        font-size: 16px;
+    }
+
     .passwordGrid {
         grid-template-columns: 1fr;
     }
@@ -339,8 +370,44 @@
         text-align: center;
     }
 
+    .avatar {
+        width: 72px;
+        height: 72px;
+        font-size: 24px;
+    }
+
     .verificationContent {
         flex-direction: column;
         text-align: center;
+    }
+
+    .verificationIcon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .verificationTitle {
+        font-size: 15px;
+    }
+
+    .verificationText {
+        font-size: 13px;
+    }
+
+    .verificationBtn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 20px;
+    }
+
+    .formInput {
+        padding: 12px 14px;
+        font-size: 16px;
+        /* Prevents iOS zoom */
+    }
+
+    .saveBtn {
+        width: 100%;
+        justify-content: center;
     }
 }
