@@ -127,6 +127,24 @@
     color: #ea580c;
 }
 
+/* Pro Link Style */
+.proLink {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    color: #92400e !important;
+}
+
+.proLink:hover {
+    background: linear-gradient(135deg, #fde68a 0%, #fcd34d 100%);
+}
+
+.proLink .navIcon {
+    color: #f59e0b !important;
+}
+
+.proBadge {
+    font-size: 14px;
+}
+
 .activeIndicator {
     position: absolute;
     left: 0;

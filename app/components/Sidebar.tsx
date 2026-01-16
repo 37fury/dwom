@@ -20,7 +20,8 @@ import {
     Store,
     Settings,
     LogOut,
-    ChevronRight
+    ChevronRight,
+    Crown
 } from 'lucide-react';
 
 export default function Sidebar() {
@@ -55,6 +56,7 @@ export default function Sidebar() {
         { href: '/dashboard', label: 'Overview', icon: LayoutDashboard },
         { href: '/dashboard/wallet', label: 'Wallet', icon: Wallet, badge: 'GH₵' },
         { href: '/dashboard/memberships', label: 'Memberships', icon: CreditCard },
+        { href: '/dashboard/pro', label: 'Go Pro', icon: Crown, isPro: true },
         { href: '/dashboard/integrations', label: 'Integrations', icon: Link2 },
         { href: '/dashboard/affiliates', label: 'Affiliates', icon: Users },
         { href: '/dashboard/messages', label: 'Messages', icon: MessageCircle },
@@ -95,18 +97,20 @@ export default function Sidebar() {
                         {mainLinks.map((link) => {
                             const isActive = pathname === link.href ||
                                 (link.href !== '/dashboard' && pathname.startsWith(link.href));
+                            const isPro = 'isPro' in link && link.isPro;
                             return (
                                 <Link
                                     key={link.href}
                                     href={link.href}
                                     onClick={() => setIsMobileOpen(false)}
-                                    className={`${styles.navLink} ${isActive ? styles.active : ''}`}
+                                    className={`${styles.navLink} ${isActive ? styles.active : ''} ${isPro ? styles.proLink : ''}`}
                                 >
                                     <link.icon size={18} className={styles.navIcon} />
                                     <span className={styles.navLabel}>{link.label}</span>
                                     {link.badge && (
                                         <span className={styles.navBadge}>{link.badge}</span>
                                     )}
+                                    {isPro && <span className={styles.proBadge}>✨</span>}
                                     {isActive && <div className={styles.activeIndicator} />}
                                 </Link>
                             );
@@ -156,19 +160,6 @@ export default function Sidebar() {
                                 <span className={styles.navLabel}>Sign Out</span>
                             </button>
                         </form>
-
-                        {/* Go Pro Card */}
-                        <Link
-                            href="/dashboard/pro"
-                            onClick={() => setIsMobileOpen(false)}
-                            className={styles.proCard}
-                        >
-                            <div className={styles.proIcon}>🚀</div>
-                            <div className={styles.proContent}>
-                                <span className={styles.proTitle}>Go Pro</span>
-                                <span className={styles.proText}>Unlock all features</span>
-                            </div>
-                        </Link>
                     </div>
                 </nav>
             </aside>
