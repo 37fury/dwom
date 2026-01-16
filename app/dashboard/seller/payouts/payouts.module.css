@@ -380,11 +380,30 @@
     }
 
     .statCard {
-        padding: 16px;
+        padding: 16px 20px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+    }
+
+    .statHeader {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        margin-bottom: 0;
+    }
+
+    .statIcon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .statLabel {
+        font-size: 15px;
+        font-weight: 600;
     }
 
     .statValue {
