@@ -11,35 +11,17 @@ interface LoginFormProps {
 }
 
 export default function LoginForm({ redirectTo, message }: LoginFormProps) {
-    const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+    const [captchaToken, setCaptchaToken] = useState<string>('');
     const [error, setError] = useState<string | null>(message || null);
-    const [isLoading, setIsLoading] = useState(false);
     const captchaRef = useRef<HCaptcha>(null);
 
-    const handleSubmit = async (formData: FormData, action: 'login' | 'signup') => {
-        if (!captchaToken) {
-            setError('Please complete the captcha');
-            return;
-        }
-
-        setIsLoading(true);
+    const handleCaptchaVerify = (token: string) => {
+        setCaptchaToken(token);
         setError(null);
+    };
 
-        formData.append('captchaToken', captchaToken);
-
-        try {
-            if (action === 'login') {
-                await login(formData);
-            } else {
-                await signup(formData);
-            }
-        } catch (err) {
-            setError('An error occurred. Please try again.');
-            captchaRef.current?.resetCaptcha();
-            setCaptchaToken(null);
-        } finally {
-            setIsLoading(false);
-        }
+    const handleCaptchaExpire = () => {
+        setCaptchaToken('');
     };
 
     return (
@@ -77,35 +59,38 @@ export default function LoginForm({ redirectTo, message }: LoginFormProps) {
                     <input type="hidden" name="redirect" value={redirectTo} />
                 )}
 
+                {/* Hidden captcha token for form submission */}
+                <input type="hidden" name="captchaToken" value={captchaToken} />
+
                 {/* hCaptcha Widget */}
                 <div style={{ display: 'flex', justifyContent: 'center', margin: '20px 0' }}>
                     <HCaptcha
                         ref={captchaRef}
-                        sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || ''}
-                        onVerify={(token) => setCaptchaToken(token)}
-                        onExpire={() => setCaptchaToken(null)}
-                        theme="dark"
+                        sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || '10000000-ffff-ffff-ffff-000000000001'}
+                        onVerify={handleCaptchaVerify}
+                        onExpire={handleCaptchaExpire}
+                        theme="light"
                     />
                 </div>
 
                 <div className={styles.buttonGroup}>
                     <button
                         type="submit"
-                        formAction={(formData) => handleSubmit(formData, 'login')}
+                        formAction={login}
                         className={styles.buttonPrimary}
-                        disabled={isLoading || !captchaToken}
+                        disabled={!captchaToken}
                         style={{ opacity: !captchaToken ? 0.6 : 1 }}
                     >
-                        {isLoading ? 'Signing in...' : 'Log in'}
+                        Log in
                     </button>
                     <button
                         type="submit"
-                        formAction={(formData) => handleSubmit(formData, 'signup')}
+                        formAction={signup}
                         className={styles.buttonSecondary}
-                        disabled={isLoading || !captchaToken}
+                        disabled={!captchaToken}
                         style={{ opacity: !captchaToken ? 0.6 : 1 }}
                     >
-                        {isLoading ? 'Creating...' : 'Create Account'}
+                        Create Account
                     </button>
                 </div>
                 <a href="/forgot-password" style={{
@@ -122,3 +107,4 @@ export default function LoginForm({ redirectTo, message }: LoginFormProps) {
         </>
     );
 }
+
