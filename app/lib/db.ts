@@ -1568,6 +1568,43 @@ export const db = {
         return data ? data.map(mapProduct) : [];
     },
 
+    // SELLER ORDERS
+    getSellerOrders: async (): Promise<any[]> => {
+        const supabase = await createClient();
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return [];
+
+        const { data, error } = await supabase
+            .from('orders')
+            .select(`
+                id,
+                total_amount,
+                status,
+                created_at,
+                payment_channel,
+                payment_reference,
+                products (id, title),
+                profiles!orders_user_id_fkey (full_name, email)
+            `)
+            .eq('products.seller_id', user.id)
+            .order('created_at', { ascending: false });
+
+        if (error || !data) return [];
+
+        return data.map((o: any) => ({
+            id: o.id,
+            amount: o.total_amount,
+            status: o.status,
+            createdAt: o.created_at,
+            channel: o.payment_channel,
+            reference: o.payment_reference,
+            productId: o.products?.id,
+            productTitle: o.products?.title,
+            customerName: o.profiles?.full_name,
+            customerEmail: o.profiles?.email,
+        }));
+    },
+
     // NOTIFICATIONS
     getNotifications: async (): Promise<Notification[]> => {
         const supabase = await createClient();

@@ -18,7 +18,8 @@ import {
     ChevronRight,
     Settings,
     LogOut,
-    Tag
+    Tag,
+    BarChart3
 } from 'lucide-react';
 
 export default function SellerSidebar() {
@@ -48,6 +49,8 @@ export default function SellerSidebar() {
     const businessLinks = [
         { href: '/dashboard/seller', label: 'Overview', icon: LayoutDashboard, exact: true },
         { href: '/dashboard/seller/products', label: 'Products', icon: Package },
+        { href: '/dashboard/seller/orders', label: 'Orders', icon: ShoppingBag },
+        { href: '/dashboard/seller/analytics', label: 'Analytics', icon: BarChart3 },
         { href: '/dashboard/seller/discounts', label: 'Discounts', icon: Tag },
         { href: '/dashboard/seller/payouts', label: 'Payouts', icon: Wallet },
         { href: '/dashboard/seller/promotions', label: 'Promotions', icon: Megaphone },
