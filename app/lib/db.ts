@@ -480,6 +480,19 @@ export const db = {
         };
     },
 
+    // GET USER BY ID (for emails, notifications)
+    getUserById: async (userId: string): Promise<{ id: string; email: string; full_name: string } | null> => {
+        const supabase = await createClient();
+        const { data, error } = await supabase
+            .from('profiles')
+            .select('id, email, full_name')
+            .eq('id', userId)
+            .single();
+
+        if (error || !data) return null;
+        return data;
+    },
+
     // AFFILIATES
     getAffiliateStats: async (): Promise<AffiliateStats> => {
         const supabase = await createClient();

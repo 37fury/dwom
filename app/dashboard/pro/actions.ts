@@ -115,6 +115,26 @@ export async function verifyProSubscription(reference: string) {
             return { success: false, error: 'Failed to activate Pro subscription' };
         }
 
+        // Send Pro welcome email
+        try {
+            const { sendProWelcome } = await import('@/app/lib/email');
+            const { data: profile } = await supabase
+                .from('profiles')
+                .select('email, full_name')
+                .eq('id', userId)
+                .single();
+
+            if (profile?.email) {
+                await sendProWelcome(profile.email, {
+                    userName: profile.full_name || 'there',
+                    plan: plan,
+                    expiresAt: expiresAt.toISOString(),
+                });
+            }
+        } catch (emailError) {
+            console.error('Pro welcome email failed (non-critical):', emailError);
+        }
+
         return { success: true, plan, expiresAt: expiresAt.toISOString() };
 
     } catch (error: any) {

@@ -2,8 +2,8 @@
 
 import { db } from '../lib/db';
 import { redirect } from 'next/navigation';
-
 import { cookies } from 'next/headers';
+import { sendPurchaseConfirmation, sendSellerSaleNotification } from '../lib/email';
 
 const PAYSTACK_SECRET = process.env.PAYSTACK_SECRET_KEY;
 
@@ -127,6 +127,39 @@ export async function verifyPayment(reference: string) {
 
         if (result.success) {
             console.log('Order created successfully:', result.orderId);
+
+            // Send email notifications (non-blocking)
+            try {
+                const product = await db.getProduct(productId);
+                const buyer = await db.getUserById(userId);
+
+                if (product && buyer && buyer.email) {
+                    // Get seller name
+                    const seller = product.sellerId ? await db.getUserById(product.sellerId) : null;
+
+                    // Send purchase confirmation to buyer
+                    await sendPurchaseConfirmation(buyer.email, {
+                        buyerName: buyer.full_name || 'there',
+                        productName: product.title,
+                        amount: `GH₵${(amount / 100).toFixed(2)}`,
+                        sellerName: seller?.full_name || 'Seller',
+                        downloadLink: `https://dwom.store/dashboard`,
+                    });
+
+                    // Send sale notification to seller
+                    if (seller && seller.email) {
+                        await sendSellerSaleNotification(seller.email, {
+                            sellerName: seller.full_name || 'Seller',
+                            productName: product.title,
+                            amount: `GH₵${(amount / 100).toFixed(2)}`,
+                            buyerName: buyer.full_name || 'A customer',
+                        });
+                    }
+                }
+            } catch (emailError) {
+                console.error('Email notification failed (non-critical):', emailError);
+            }
+
             return { success: true, orderId: result.orderId };
         } else {
             console.error('DB Order Creation Failed');
