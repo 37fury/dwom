@@ -142,10 +142,16 @@ export default function PromotionsClient({ campaigns: initialCampaigns, stats }:
                     </h1>
                     <p>Create and manage promotional campaigns across all categories.</p>
                 </div>
-                <Link href="/dashboard/seller/promotions/new" className={styles.newCampaignBtn}>
-                    <Plus size={18} />
-                    New Campaign
-                </Link>
+                <div className={styles.headerActions}>
+                    <Link href="/dashboard/seller/promotions/submissions" className={styles.viewSubmissionsBtn}>
+                        <ExternalLink size={18} />
+                        View Submissions
+                    </Link>
+                    <Link href="/dashboard/seller/promotions/new" className={styles.newCampaignBtn}>
+                        <Plus size={18} />
+                        New Campaign
+                    </Link>
+                </div>
             </div>
 
             {/* Stats Grid */}

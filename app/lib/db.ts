@@ -178,12 +178,17 @@ export type Campaign = {
 export type Submission = {
     id: string;
     campaignId: string;
+    campaignTitle?: string;
     creatorId: string;
+    creatorName?: string;
     videoUrl: string;
+    platform: 'tiktok' | 'instagram' | 'youtube' | 'twitter' | 'other';
     views: number;
     earnings: number;
     status: 'pending' | 'approved' | 'rejected';
-    date: string;
+    submittedAt: string;
+    reviewedAt?: string;
+    rejectionReason?: string;
 };
 
 
@@ -257,12 +262,17 @@ const mapCampaign = (row: any): Campaign => ({
 const mapSubmission = (row: any): Submission => ({
     id: row.id,
     campaignId: row.campaign_id,
+    campaignTitle: row.campaign_title || '',
     creatorId: row.creator_id,
+    creatorName: row.creator_name || 'Unknown',
     videoUrl: row.video_url,
-    views: row.views_count,
-    earnings: Number(row.earnings),
+    platform: row.platform || 'other',
+    views: row.views_count || 0,
+    earnings: Number(row.earnings) || 0,
     status: row.status,
-    date: new Date(row.created_at).toLocaleDateString()
+    submittedAt: new Date(row.created_at).toISOString(),
+    reviewedAt: row.reviewed_at ? new Date(row.reviewed_at).toISOString() : undefined,
+    rejectionReason: row.rejection_reason
 });
 
 // --- Constants / Mock Fallbacks for missing features ---

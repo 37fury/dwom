@@ -1,0 +1,267 @@
+.container {
+    max-width: 800px;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #64748b;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.backLink:hover {
+    color: #334155;
+}
+
+.header {
+    margin-bottom: 32px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: #64748b;
+}
+
+/* Stats */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.statCard {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.statIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.statLabel {
+    display: block;
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 2px;
+}
+
+.statValue {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+/* Section */
+.section {
+    margin-bottom: 32px;
+}
+
+.sectionTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 16px;
+}
+
+/* Earnings List */
+.earningsList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.earningCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.cardLeft {
+    flex: 1;
+}
+
+.campaignInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.campaignInfo h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.platform {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.metaItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.viewLink {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.viewLink:hover {
+    text-decoration: underline;
+}
+
+.cardRight {
+    text-align: right;
+}
+
+.earning {
+    display: block;
+    font-size: 20px;
+    font-weight: 800;
+    color: #22c55e;
+    margin-bottom: 4px;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.status.approved {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status.pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status.rejected {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Withdraw Section */
+.withdrawSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border: 1px solid #bbf7d0;
+    border-radius: 20px;
+    padding: 24px;
+}
+
+.withdrawInfo h3 {
+    font-size: 14px;
+    color: #166534;
+    margin-bottom: 4px;
+}
+
+.withdrawAmount {
+    font-size: 28px;
+    font-weight: 800;
+    color: #22c55e;
+}
+
+.withdrawBtn {
+    padding: 14px 28px;
+    background: #22c55e;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.withdrawBtn:hover {
+    background: #16a34a;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .statsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .earningCard {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .cardRight {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .withdrawSection {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+
+    .withdrawBtn {
+        width: 100%;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+}

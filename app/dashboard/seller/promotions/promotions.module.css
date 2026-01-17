@@ -52,6 +52,32 @@
     color: #64748b;
 }
 
+.headerActions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.viewSubmissionsBtn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    color: #334155;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.viewSubmissionsBtn:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+
 .newCampaignBtn {
     display: flex;
     align-items: center;

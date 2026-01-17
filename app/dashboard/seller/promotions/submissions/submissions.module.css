@@ -1,0 +1,299 @@
+.container {
+    max-width: 900px;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #64748b;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.backLink:hover {
+    color: #334155;
+}
+
+.header {
+    margin-bottom: 32px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: #64748b;
+}
+
+/* Stats */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.statCard {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+}
+
+.statLabel {
+    display: block;
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 4px;
+}
+
+.statValue {
+    font-size: 24px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.filterBtn {
+    padding: 8px 16px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filterBtn:hover {
+    border-color: #cbd5e1;
+}
+
+.filterBtn.active {
+    background: #0f172a;
+    border-color: #0f172a;
+    color: white;
+}
+
+/* Submissions List */
+.submissionsList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 64px;
+    background: #f8fafc;
+    border-radius: 20px;
+    color: #94a3b8;
+}
+
+.emptyState h3 {
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #334155;
+}
+
+.emptyState p {
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* Submission Card */
+.submissionCard {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.creatorInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.creatorInfo h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.campaignName {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.statusBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.cardBody {
+    padding: 16px 20px;
+}
+
+.infoRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.platform {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.viewLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.viewLink:hover {
+    text-decoration: underline;
+}
+
+.statsRow {
+    display: flex;
+    gap: 20px;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.stat svg {
+    color: #94a3b8;
+}
+
+.rejectionNote {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: #fef2f2;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #991b1b;
+}
+
+.cardActions {
+    display: flex;
+    gap: 12px;
+    padding: 16px 20px;
+    background: #f8fafc;
+    border-top: 1px solid #f1f5f9;
+}
+
+.approveBtn,
+.rejectBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.approveBtn {
+    background: #22c55e;
+    border: none;
+    color: white;
+}
+
+.approveBtn:hover {
+    background: #16a34a;
+}
+
+.approveBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.rejectBtn {
+    background: white;
+    border: 1px solid #e2e8f0;
+    color: #ef4444;
+}
+
+.rejectBtn:hover {
+    background: #fef2f2;
+    border-color: #fecaca;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .title {
+        font-size: 22px;
+    }
+
+    .statsRow {
+        flex-wrap: wrap;
+    }
+}
