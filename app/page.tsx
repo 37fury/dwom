@@ -7,6 +7,8 @@ import LiveActivity from './components/LiveActivity';
 import ExitIntent from './components/ExitIntent';
 import Leaderboard, { mockTopSellers } from './components/Leaderboard';
 import SuccessStories from './components/SuccessStories';
+import Testimonials from './components/Testimonials';
+import SocialProofPopup from './components/SocialProofPopup';
 
 import { createClient } from '@/utils/supabase/server';
 import { db } from './lib/db';
@@ -29,6 +31,9 @@ export default async function Home(props: { searchParams: Promise<{ q?: string; 
         <CategoryList />
         <MarketplaceGrid products={products} />
 
+        {/* Testimonials */}
+        <Testimonials />
+
         {/* Leaderboard Section */}
         <section style={{ padding: '60px 0', background: '#f8fafc' }}>
           <div className="container" style={{ maxWidth: '500px' }}>
@@ -42,7 +47,7 @@ export default async function Home(props: { searchParams: Promise<{ q?: string; 
       <Footer />
       <LiveActivity />
       <ExitIntent />
+      <SocialProofPopup />
     </main>
   );
 }
-
