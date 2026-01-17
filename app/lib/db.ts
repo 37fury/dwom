@@ -1690,6 +1690,120 @@ export const db = {
             });
 
         return !error;
+    },
+
+    // ACTIVITY LOGS
+    getActivityLogs: async (): Promise<any[]> => {
+        const supabase = await createClient();
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return [];
+
+        const { data, error } = await supabase
+            .from('activity_logs')
+            .select('*')
+            .eq('user_id', user.id)
+            .order('created_at', { ascending: false })
+            .limit(50);
+
+        if (error || !data) return [];
+
+        return data.map((log: any) => ({
+            id: log.id,
+            action: log.action,
+            device: log.device,
+            ipAddress: log.ip_address,
+            location: log.location,
+            createdAt: log.created_at,
+        }));
+    },
+
+    logActivity: async (action: string, metadata?: { device?: string; ipAddress?: string; location?: string }): Promise<boolean> => {
+        const supabase = await createClient();
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return false;
+
+        const { error } = await supabase
+            .from('activity_logs')
+            .insert({
+                user_id: user.id,
+                action,
+                device: metadata?.device || null,
+                ip_address: metadata?.ipAddress || null,
+                location: metadata?.location || null,
+            });
+
+        return !error;
+    },
+
+    // REFUNDS
+    requestRefund: async (orderId: string, reason: string): Promise<{ success: boolean; error?: string }> => {
+        const supabase = await createClient();
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return { success: false, error: 'Unauthorized' };
+
+        // Check if order belongs to user
+        const { data: order, error: orderError } = await supabase
+            .from('orders')
+            .select('id, status, total_amount')
+            .eq('id', orderId)
+            .eq('user_id', user.id)
+            .single();
+
+        if (orderError || !order) {
+            return { success: false, error: 'Order not found' };
+        }
+
+        if (order.status === 'refunded') {
+            return { success: false, error: 'Order already refunded' };
+        }
+
+        // Create refund request
+        const { error } = await supabase
+            .from('refund_requests')
+            .insert({
+                user_id: user.id,
+                order_id: orderId,
+                reason,
+                status: 'pending',
+                amount: order.total_amount,
+            });
+
+        if (error) {
+            return { success: false, error: 'Failed to submit refund request' };
+        }
+
+        return { success: true };
+    },
+
+    getRefundRequests: async (): Promise<any[]> => {
+        const supabase = await createClient();
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return [];
+
+        const { data, error } = await supabase
+            .from('refund_requests')
+            .select(`
+                id,
+                reason,
+                status,
+                amount,
+                created_at,
+                orders (id, products (title))
+            `)
+            .eq('user_id', user.id)
+            .order('created_at', { ascending: false });
+
+        if (error || !data) return [];
+
+        return data.map((r: any) => ({
+            id: r.id,
+            reason: r.reason,
+            status: r.status,
+            amount: r.amount,
+            createdAt: r.created_at,
+            orderId: r.orders?.id,
+            productTitle: r.orders?.products?.title,
+        }));
     }
 
 };
