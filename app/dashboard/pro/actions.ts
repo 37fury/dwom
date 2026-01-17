@@ -40,7 +40,7 @@ export async function initProSubscription(plan: 'monthly' | 'annual') {
                         { display_name: 'Subscription', variable_name: 'subscription', value: `dwom Pro (${plan})` }
                     ]
                 },
-                callback_url: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/dashboard/pro/verify`
+                callback_url: `${process.env.NEXT_PUBLIC_APP_URL || 'https://dwom.store'}/dashboard/pro/verify`
             }),
         });
 
