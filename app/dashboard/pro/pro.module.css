@@ -171,6 +171,13 @@
     transform: none;
 }
 
+.errorText {
+    color: #ef4444;
+    font-size: 13px;
+    margin-top: 12px;
+    text-align: center;
+}
+
 /* Benefits Section */
 .benefitsSection {
     margin-bottom: 48px;

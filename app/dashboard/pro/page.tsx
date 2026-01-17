@@ -18,6 +18,7 @@ import {
     TrendingUp
 } from 'lucide-react';
 import styles from './pro.module.css';
+import { initProSubscription } from './actions';
 
 const buyerBenefits = [
     { icon: Percent, title: '5% Off All Purchases', description: 'Save on every order you make' },
@@ -41,6 +42,7 @@ export default function ProPage() {
     const router = useRouter();
     const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('annual');
     const [processing, setProcessing] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     const pricing = {
         monthly: 29,
@@ -49,10 +51,17 @@ export default function ProPage() {
 
     const handleSubscribe = async () => {
         setProcessing(true);
-        // TODO: Implement payment integration
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        alert('Pro subscription coming soon! Payment integration in progress.');
-        setProcessing(false);
+        setError(null);
+
+        const result = await initProSubscription(billingCycle);
+
+        if (result.success && result.authorizationUrl) {
+            // Redirect to Paystack payment page
+            window.location.href = result.authorizationUrl;
+        } else {
+            setError(result.error || 'Payment initialization failed');
+            setProcessing(false);
+        }
     };
 
     return (
@@ -105,8 +114,11 @@ export default function ProPage() {
                     onClick={handleSubscribe}
                     disabled={processing}
                 >
-                    {processing ? 'Processing...' : 'Subscribe Now'}
+                    {processing ? 'Redirecting to payment...' : 'Subscribe Now'}
                 </button>
+                {error && (
+                    <p className={styles.errorText}>{error}</p>
+                )}
             </div>
 
             {/* Benefits Sections */}
