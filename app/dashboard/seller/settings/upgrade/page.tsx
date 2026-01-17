@@ -1,5 +1,9 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
-import { Crown, ArrowLeft, Check, Zap, Shield, Globe, Palette, FileText, Sparkles, Clock } from 'lucide-react';
+import { Crown, ArrowLeft, Check, Zap, Shield, Globe, Palette, FileText, Sparkles } from 'lucide-react';
+import { initProSubscription } from '@/app/dashboard/pro/actions';
 
 const proFeatures = [
     { icon: Zap, text: 'Express payouts (same-day)' },
@@ -11,6 +15,29 @@ const proFeatures = [
 ];
 
 export default function UpgradePage() {
+    const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
+    const [processing, setProcessing] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    const pricing = {
+        monthly: 59,
+        annual: 529,
+    };
+
+    const handleUpgrade = async () => {
+        setProcessing(true);
+        setError(null);
+
+        const result = await initProSubscription(billingCycle);
+
+        if (result.success && result.authorizationUrl) {
+            window.location.href = result.authorizationUrl;
+        } else {
+            setError(result.error || 'Payment initialization failed');
+            setProcessing(false);
+        }
+    };
+
     return (
         <div style={{ maxWidth: '600px', width: '100%', paddingBottom: '48px' }}>
             <Link
@@ -68,9 +95,49 @@ export default function UpgradePage() {
                 <h1 style={{ fontSize: '32px', fontWeight: '800', marginBottom: '12px', position: 'relative' }}>
                     Upgrade to Pro
                 </h1>
-                <p style={{ fontSize: '16px', opacity: 0.8, marginBottom: '32px', position: 'relative' }}>
+                <p style={{ fontSize: '16px', opacity: 0.8, marginBottom: '24px', position: 'relative' }}>
                     Unlock premium features to grow your business faster.
                 </p>
+
+                {/* Billing Toggle */}
+                <div style={{
+                    display: 'flex',
+                    gap: '8px',
+                    justifyContent: 'center',
+                    marginBottom: '16px',
+                    position: 'relative'
+                }}>
+                    <button
+                        onClick={() => setBillingCycle('monthly')}
+                        style={{
+                            padding: '10px 20px',
+                            borderRadius: '10px',
+                            border: 'none',
+                            background: billingCycle === 'monthly' ? '#f97316' : 'rgba(255,255,255,0.1)',
+                            color: 'white',
+                            fontWeight: '600',
+                            fontSize: '14px',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        Monthly
+                    </button>
+                    <button
+                        onClick={() => setBillingCycle('annual')}
+                        style={{
+                            padding: '10px 20px',
+                            borderRadius: '10px',
+                            border: 'none',
+                            background: billingCycle === 'annual' ? '#f97316' : 'rgba(255,255,255,0.1)',
+                            color: 'white',
+                            fontWeight: '600',
+                            fontSize: '14px',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        Annual (Save 25%)
+                    </button>
+                </div>
 
                 {/* Price */}
                 <div style={{
@@ -81,11 +148,13 @@ export default function UpgradePage() {
                     position: 'relative'
                 }}>
                     <div style={{ fontSize: '48px', fontWeight: '800', marginBottom: '4px' }}>
-                        GH₵59<span style={{ fontSize: '18px', fontWeight: '500' }}>/month</span>
+                        GH₵{pricing[billingCycle]}<span style={{ fontSize: '18px', fontWeight: '500' }}>/{billingCycle === 'monthly' ? 'month' : 'year'}</span>
                     </div>
-                    <p style={{ fontSize: '14px', opacity: 0.7 }}>
-                        or GH₵529/year (save 25%)
-                    </p>
+                    {billingCycle === 'annual' && (
+                        <p style={{ fontSize: '14px', opacity: 0.7 }}>
+                            That's just GH₵44/month
+                        </p>
+                    )}
                 </div>
 
                 {/* Features */}
@@ -121,25 +190,35 @@ export default function UpgradePage() {
                 </div>
 
                 {/* CTA */}
-                <button style={{
-                    width: '100%',
-                    padding: '18px',
-                    background: 'linear-gradient(135deg, #f97316, #ea580c)',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '14px',
-                    fontSize: '17px',
-                    fontWeight: '700',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '10px',
-                    position: 'relative'
-                }}>
+                <button
+                    onClick={handleUpgrade}
+                    disabled={processing}
+                    style={{
+                        width: '100%',
+                        padding: '18px',
+                        background: processing ? 'rgba(249, 115, 22, 0.5)' : 'linear-gradient(135deg, #f97316, #ea580c)',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '14px',
+                        fontSize: '17px',
+                        fontWeight: '700',
+                        cursor: processing ? 'not-allowed' : 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '10px',
+                        position: 'relative'
+                    }}
+                >
                     <Zap size={20} />
-                    Upgrade Now
+                    {processing ? 'Redirecting to payment...' : 'Upgrade Now'}
                 </button>
+
+                {error && (
+                    <p style={{ fontSize: '13px', color: '#ef4444', marginTop: '12px', position: 'relative' }}>
+                        {error}
+                    </p>
+                )}
 
                 <p style={{ fontSize: '12px', opacity: 0.6, marginTop: '16px', position: 'relative' }}>
                     Cancel anytime. 14-day money-back guarantee.
