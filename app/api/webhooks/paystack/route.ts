@@ -40,6 +40,12 @@ export async function POST(request: NextRequest) {
             case 'refund.processed':
                 await handleRefund(event.data);
                 break;
+            case 'transfer.success':
+                await handleTransferSuccess(event.data);
+                break;
+            case 'transfer.failed':
+                await handleTransferFailed(event.data);
+                break;
             default:
                 console.log('Unhandled webhook event:', event.event);
         }
@@ -258,6 +264,74 @@ async function handleRefund(data: any) {
             'Refund Processed',
             `Your refund of GH₵${(amount / 100).toFixed(2)} has been processed.`,
             '/dashboard'
+        );
+    }
+}
+
+async function handleTransferSuccess(data: any) {
+    const { reference, amount, recipient } = data;
+
+    console.log(`Transfer successful: ${reference}`);
+
+    const supabase = await createClient();
+
+    // Find and update payout status
+    const { data: payout } = await supabase
+        .from('payouts')
+        .select('id, user_id')
+        .eq('transfer_reference', reference)
+        .single();
+
+    if (payout) {
+        await supabase
+            .from('payouts')
+            .update({ status: 'paid' })
+            .eq('id', payout.id);
+
+        await db.createNotification(
+            payout.user_id,
+            'payout',
+            'Payout Sent! 💸',
+            `Your payout of GH₵${(amount / 100).toFixed(2)} has been sent to your account.`,
+            '/dashboard/seller/payouts'
+        );
+    }
+}
+
+async function handleTransferFailed(data: any) {
+    const { reference, amount } = data;
+
+    console.log(`Transfer failed: ${reference}`);
+
+    const supabase = await createClient();
+
+    // Find and update payout status
+    const { data: payout } = await supabase
+        .from('payouts')
+        .select('id, user_id')
+        .eq('transfer_reference', reference)
+        .single();
+
+    if (payout) {
+        await supabase
+            .from('payouts')
+            .update({ status: 'failed' })
+            .eq('id', payout.id);
+
+        // Refund the balance
+        await db.createWalletTransaction(
+            payout.user_id,
+            amount / 100,
+            'credit',
+            'Payout failed - funds returned'
+        );
+
+        await db.createNotification(
+            payout.user_id,
+            'system',
+            'Payout Failed',
+            `Your payout could not be completed. GH₵${(amount / 100).toFixed(2)} has been returned to your balance.`,
+            '/dashboard/seller/payouts'
         );
     }
 }
