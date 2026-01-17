@@ -87,17 +87,15 @@ export default function SellerSidebar() {
                             const isActive = link.exact
                                 ? pathname === link.href
                                 : pathname.startsWith(link.href);
-                            const isPro = 'isPro' in link && link.isPro;
                             return (
                                 <Link
                                     key={link.href}
                                     href={link.href}
                                     onClick={() => setIsMobileOpen(false)}
-                                    className={`${styles.navLink} ${isActive ? styles.active : ''} ${isPro ? styles.proLink : ''}`}
+                                    className={`${styles.navLink} ${isActive ? styles.active : ''}`}
                                 >
                                     <link.icon size={18} className={styles.navIcon} />
                                     <span className={styles.navLabel}>{link.label}</span>
-                                    {isPro && <span className={styles.proBadge}>✨</span>}
                                     {isActive && <div className={styles.activeIndicator} />}
                                 </Link>
                             );
