@@ -17,8 +17,7 @@ import {
     ShoppingBag,
     ChevronRight,
     Settings,
-    LogOut,
-    Crown
+    LogOut
 } from 'lucide-react';
 
 export default function SellerSidebar() {
@@ -51,7 +50,6 @@ export default function SellerSidebar() {
         { href: '/dashboard/seller/payouts', label: 'Payouts', icon: Wallet },
         { href: '/dashboard/seller/promotions', label: 'Promotions', icon: Megaphone },
         { href: '/dashboard/seller/messages', label: 'Messages', icon: MessageCircle },
-        { href: '/dashboard/pro', label: 'Go Pro', icon: Crown, isPro: true },
     ];
 
     return (
