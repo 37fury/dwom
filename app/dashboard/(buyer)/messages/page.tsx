@@ -1,8 +1,9 @@
 import { db } from '@/app/lib/db';
 import ConversationList from './components/ConversationList';
 import ChatWindow from './components/ChatWindow';
+import NewConversationButton from './components/NewConversationButton';
 import styles from './messages.module.css';
-import { MessageCircle, Plus, Search } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 
 export default async function MessagesPage({ searchParams }: { searchParams: Promise<{ id?: string }> }) {
     const { id: activeId } = await searchParams;
@@ -33,9 +34,7 @@ export default async function MessagesPage({ searchParams }: { searchParams: Pro
                         <MessageCircle size={20} />
                         Messages
                     </h1>
-                    <button className={styles.newChatBtn} title="New Message">
-                        <Plus size={18} />
-                    </button>
+                    <NewConversationButton />
                 </div>
 
                 <div className={styles.searchBox}>
