@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
 import ThemeToggle from './ThemeToggle';
+import NotificationBell from './NotificationBell';
 
 export default function Navbar({ user }: { user?: any }) {
     const pathname = usePathname();
@@ -66,6 +67,11 @@ export default function Navbar({ user }: { user?: any }) {
                 </div>
 
                 <div className={styles.rightActions}>
+                    {/* Notification Bell - only for logged in users */}
+                    {user && (
+                        <NotificationBell />
+                    )}
+
                     {/* Theme Toggle */}
                     <div className={styles.themeToggle}>
                         <ThemeToggle />
