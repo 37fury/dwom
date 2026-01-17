@@ -15,9 +15,12 @@ import {
     ExternalLink,
     Radio,
     DollarSign,
-    Megaphone
+    Megaphone,
+    X,
+    Check,
+    Wallet
 } from 'lucide-react';
-import { Campaign, CampaignType } from '@/app/lib/db';
+import { Campaign, CampaignType, Submission } from '@/app/lib/db';
 
 // Type icon mapping
 const typeIcons: Record<CampaignType, React.ComponentType<{ size?: number }>> = {
@@ -50,6 +53,8 @@ const typeColors: Record<CampaignType, string> = {
     custom: '#06b6d4'
 };
 
+const platforms = ['tiktok', 'instagram', 'youtube', 'twitter', 'other'] as const;
+
 interface CreatorHubClientProps {
     campaigns: Campaign[];
     stats: {
@@ -61,6 +66,11 @@ interface CreatorHubClientProps {
 
 export default function CreatorHubClient({ campaigns, stats }: CreatorHubClientProps) {
     const [activeFilter, setActiveFilter] = useState<CampaignType | 'all'>('all');
+    const [submitModal, setSubmitModal] = useState<{ open: boolean; campaign: Campaign | null }>({ open: false, campaign: null });
+    const [contentUrl, setContentUrl] = useState('');
+    const [platform, setPlatform] = useState<typeof platforms[number]>('tiktok');
+    const [submitting, setSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState<string[]>([]);
 
     const filterTabs: { key: CampaignType | 'all'; label: string }[] = [
         { key: 'all', label: 'All' },
@@ -76,6 +86,23 @@ export default function CreatorHubClient({ campaigns, stats }: CreatorHubClientP
     const filteredCampaigns = activeFilter === 'all'
         ? campaigns
         : campaigns.filter(c => c.type === activeFilter);
+
+    const handleSubmit = async () => {
+        if (!contentUrl || !submitModal.campaign) return;
+        setSubmitting(true);
+        // Simulate API call
+        await new Promise(r => setTimeout(r, 1000));
+        setSubmitted(prev => [...prev, submitModal.campaign!.id]);
+        setSubmitting(false);
+        setSubmitModal({ open: false, campaign: null });
+        setContentUrl('');
+    };
+
+    const openSubmitModal = (campaign: Campaign) => {
+        setSubmitModal({ open: true, campaign });
+        setContentUrl('');
+        setPlatform('tiktok');
+    };
 
     return (
         <div style={{ maxWidth: '1000px', margin: '0 auto', paddingBottom: '48px' }}>
@@ -382,23 +409,38 @@ export default function CreatorHubClient({ campaigns, stats }: CreatorHubClientP
                                                     Download
                                                 </button>
                                             )}
-                                            <button style={{
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                gap: '6px',
-                                                flex: 2,
-                                                padding: '12px',
-                                                background: `linear-gradient(135deg, ${typeColor}, ${typeColor}dd)`,
-                                                border: 'none',
-                                                borderRadius: '10px',
-                                                fontWeight: '600',
-                                                fontSize: '13px',
-                                                color: 'white',
-                                                cursor: 'pointer'
-                                            }}>
-                                                <ExternalLink size={16} />
-                                                Submit Content
+                                            <button
+                                                onClick={() => openSubmitModal(campaign)}
+                                                disabled={submitted.includes(campaign.id)}
+                                                style={{
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    gap: '6px',
+                                                    flex: 2,
+                                                    padding: '12px',
+                                                    background: submitted.includes(campaign.id)
+                                                        ? '#22c55e'
+                                                        : `linear-gradient(135deg, ${typeColor}, ${typeColor}dd)`,
+                                                    border: 'none',
+                                                    borderRadius: '10px',
+                                                    fontWeight: '600',
+                                                    fontSize: '13px',
+                                                    color: 'white',
+                                                    cursor: submitted.includes(campaign.id) ? 'default' : 'pointer',
+                                                    opacity: submitted.includes(campaign.id) ? 1 : 1
+                                                }}>
+                                                {submitted.includes(campaign.id) ? (
+                                                    <>
+                                                        <Check size={16} />
+                                                        Submitted
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <ExternalLink size={16} />
+                                                        Submit Content
+                                                    </>
+                                                )}
                                             </button>
                                         </div>
                                     </div>
@@ -408,6 +450,133 @@ export default function CreatorHubClient({ campaigns, stats }: CreatorHubClientP
                     </div>
                 )}
             </div>
+
+            {/* View Earnings Link */}
+            <Link href="/dashboard/affiliates/earnings" style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '10px',
+                padding: '18px',
+                background: 'linear-gradient(135deg, #dcfce7, #bbf7d0)',
+                border: '1px solid #86efac',
+                borderRadius: '16px',
+                textDecoration: 'none',
+                color: '#166534',
+                fontWeight: '700',
+                fontSize: '15px'
+            }}>
+                <Wallet size={20} />
+                View My Earnings
+            </Link>
+
+            {/* Submission Modal */}
+            {submitModal.open && submitModal.campaign && (
+                <>
+                    <div onClick={() => setSubmitModal({ open: false, campaign: null })} style={{
+                        position: 'fixed',
+                        inset: 0,
+                        background: 'rgba(0,0,0,0.5)',
+                        zIndex: 1000,
+                        backdropFilter: 'blur(4px)'
+                    }} />
+                    <div style={{
+                        position: 'fixed',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        background: 'white',
+                        borderRadius: '20px',
+                        padding: '28px',
+                        width: '90%',
+                        maxWidth: '420px',
+                        zIndex: 1001
+                    }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+                            <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#0f172a' }}>
+                                Submit Content
+                            </h3>
+                            <button onClick={() => setSubmitModal({ open: false, campaign: null })} style={{
+                                background: 'none',
+                                border: 'none',
+                                cursor: 'pointer',
+                                color: '#64748b'
+                            }}>
+                                <X size={20} />
+                            </button>
+                        </div>
+
+                        <p style={{ fontSize: '14px', color: '#64748b', marginBottom: '20px' }}>
+                            Submit your content link for <strong>{submitModal.campaign.title || submitModal.campaign.songTitle}</strong>
+                        </p>
+
+                        <div style={{ marginBottom: '16px' }}>
+                            <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: '#334155', marginBottom: '8px' }}>
+                                Platform
+                            </label>
+                            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                                {platforms.map(p => (
+                                    <button
+                                        key={p}
+                                        onClick={() => setPlatform(p)}
+                                        style={{
+                                            padding: '8px 16px',
+                                            borderRadius: '8px',
+                                            border: platform === p ? 'none' : '1px solid #e2e8f0',
+                                            background: platform === p ? '#0f172a' : 'white',
+                                            color: platform === p ? 'white' : '#64748b',
+                                            fontSize: '13px',
+                                            fontWeight: '600',
+                                            cursor: 'pointer',
+                                            textTransform: 'capitalize'
+                                        }}
+                                    >
+                                        {p}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div style={{ marginBottom: '20px' }}>
+                            <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: '#334155', marginBottom: '8px' }}>
+                                Content Link
+                            </label>
+                            <input
+                                type="url"
+                                value={contentUrl}
+                                onChange={(e) => setContentUrl(e.target.value)}
+                                placeholder="https://tiktok.com/@you/video/..."
+                                style={{
+                                    width: '100%',
+                                    padding: '14px',
+                                    border: '1px solid #e2e8f0',
+                                    borderRadius: '10px',
+                                    fontSize: '14px',
+                                    boxSizing: 'border-box'
+                                }}
+                            />
+                        </div>
+
+                        <button
+                            onClick={handleSubmit}
+                            disabled={!contentUrl || submitting}
+                            style={{
+                                width: '100%',
+                                padding: '16px',
+                                background: contentUrl ? 'linear-gradient(135deg, #f97316, #ea580c)' : '#e2e8f0',
+                                border: 'none',
+                                borderRadius: '12px',
+                                color: contentUrl ? 'white' : '#94a3b8',
+                                fontWeight: '700',
+                                fontSize: '15px',
+                                cursor: contentUrl ? 'pointer' : 'not-allowed'
+                            }}
+                        >
+                            {submitting ? 'Submitting...' : 'Submit for Review'}
+                        </button>
+                    </div>
+                </>
+            )}
         </div>
     );
 }
