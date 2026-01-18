@@ -1,0 +1,102 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+.title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.updated {
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+}
+
+.lawBanner {
+    margin-bottom: 32px;
+    padding: 16px;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--text-primary);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.section {
+    margin-bottom: 32px;
+}
+
+.section h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 16px 0 8px;
+    color: var(--text-primary);
+}
+
+.section p {
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+}
+
+.section ul {
+    list-style: disc;
+    padding-left: 24px;
+    margin-top: 12px;
+    color: var(--text-secondary);
+}
+
+.section li {
+    margin-bottom: 8px;
+}
+
+.section a {
+    color: #f97316;
+}
+
+.section a:hover {
+    text-decoration: underline;
+}
+
+.contactList {
+    list-style: none !important;
+    padding-left: 0 !important;
+}
+
+.footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer p {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.links {
+    margin-top: 16px;
+    display: flex;
+    gap: 16px;
+}
+
+.links a {
+    color: #f97316;
+    font-size: 14px;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
