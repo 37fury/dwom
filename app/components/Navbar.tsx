@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
-import ThemeToggle from './ThemeToggle';
 import NotificationBell from './NotificationBell';
 
 export default function Navbar({ user }: { user?: any }) {
@@ -71,11 +70,6 @@ export default function Navbar({ user }: { user?: any }) {
                     {user && (
                         <NotificationBell />
                     )}
-
-                    {/* Theme Toggle */}
-                    <div className={styles.themeToggle}>
-                        <ThemeToggle />
-                    </div>
 
                     {/* Desktop Auth Buttons */}
                     <div className={styles.authButtons}>
