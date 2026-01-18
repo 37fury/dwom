@@ -3,7 +3,6 @@ import Hero from './components/Hero';
 import Footer from './components/Footer';
 import CategoryList from './components/CategoryList';
 import MarketplaceGrid from './components/MarketplaceGrid';
-import LiveActivity from './components/LiveActivity';
 import ExitIntent from './components/ExitIntent';
 import Leaderboard, { mockTopSellers } from './components/Leaderboard';
 import SuccessStories from './components/SuccessStories';
@@ -41,7 +40,6 @@ export default async function Home(props: { searchParams: Promise<{ q?: string; 
         <SuccessStories />
       </FadeIn>
       <Footer />
-      <LiveActivity />
       <ExitIntent />
       <SocialProofPopup />
     </main>
