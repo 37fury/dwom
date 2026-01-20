@@ -24,7 +24,7 @@ export default async function LoginPage(props: {
             <div className={styles.imageSection}>
                 <img
                     src="/login_hero.png"
-                    alt="Dwom - Courses, Communities, Software & Payments"
+                    alt="dwam - Courses, Communities, Software & Payments"
                     className={styles.heroImage}
                 />
                 {/* Overlay content */}
@@ -40,7 +40,7 @@ export default async function LoginPage(props: {
                 <div className={styles.mobileHero}>
                     <img
                         src="/login_hero.png"
-                        alt="Dwom Platform"
+                        alt="dwam Platform"
                         className={styles.mobileHeroImage}
                     />
                     <div className={styles.mobileHeroOverlay}>
@@ -50,7 +50,7 @@ export default async function LoginPage(props: {
 
                 <div className={styles.formCard}>
                     <div className={styles.logoContainer}>
-                        <span style={{ fontSize: '36px', fontWeight: 'bold', color: '#f97316', fontFamily: 'var(--font-heading)', letterSpacing: '-1px' }}>dwom</span>
+                        <span style={{ fontSize: '36px', fontWeight: 'bold', color: '#f97316', fontFamily: 'var(--font-heading)', letterSpacing: '-1px' }}>dwam</span>
                         <span style={{ fontSize: '13px', color: '#64748b' }}>#1 African Digital Marketplace</span>
                     </div>
                     <h2 className={styles.title}>Welcome back</h2>

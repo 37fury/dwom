@@ -52,7 +52,7 @@ export default function Navbar({ user }: { user?: any }) {
                 <div className={styles.left}>
                     <Link href="/" className={styles.logo} style={{ textDecoration: 'none' }}>
                         <div className={styles.logoContainer}>
-                            <span style={{ fontSize: '24px', fontWeight: 'bold', color: '#f97316', fontFamily: 'var(--font-heading)', letterSpacing: '-1px', lineHeight: '1' }}>dwom</span>
+                            <span style={{ fontSize: '24px', fontWeight: 'bold', color: '#f97316', fontFamily: 'var(--font-heading)', letterSpacing: '-1px', lineHeight: '1' }}>dwam</span>
                             <span className={styles.tagline}>#1 digital marketplace in Africa</span>
                         </div>
                     </Link>

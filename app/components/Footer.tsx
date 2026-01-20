@@ -13,7 +13,7 @@ export default function Footer() {
                 <div className={styles.top}>
                     <div className={styles.brand}>
                         <Link href="/" style={{ display: 'inline-block', marginBottom: '1rem' }}>
-                            <span style={{ fontSize: '32px', fontWeight: 'bold', color: '#f97316', fontFamily: 'var(--font-heading)', letterSpacing: '-1px' }}>dwom</span>
+                            <span style={{ fontSize: '32px', fontWeight: 'bold', color: '#f97316', fontFamily: 'var(--font-heading)', letterSpacing: '-1px' }}>dwam</span>
                         </Link>
                         <p className={styles.tagline}>Empowering African creators.</p>
                     </div>
@@ -32,14 +32,14 @@ export default function Footer() {
                         </div>
                         <div className={styles.column}>
                             <h4>Support</h4>
-                            <Link href="mailto:dwom.store@gmail.com">Contact Us</Link>
+                            <Link href="mailto:dwam.store@gmail.com">Contact Us</Link>
                             <Link href="/terms">Terms</Link>
                             <Link href="/privacy">Privacy</Link>
                         </div>
                     </div>
                 </div>
                 <div className={styles.bottom}>
-                    <p>&copy; 2025 dwom Inc. All rights reserved.</p>
+                    <p>&copy; 2025 dwam Inc. All rights reserved.</p>
                 </div>
             </div>
         </footer>

@@ -16,18 +16,18 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "dwom | #1 Digital Marketplace in Africa",
+  title: "dwam | #1 Digital Marketplace in Africa",
   description: 'The #1 platform for African creators to sell courses, communities, and software. Get paid instantly in Cedis, Naira, or Crypto.',
   icons: {
     icon: '/logo.png',
     apple: '/logo.png',
   },
-  metadataBase: new URL('https://dwom.vercel.app'),
+  metadataBase: new URL('https://dwam.vercel.app'),
   openGraph: {
-    title: 'dwom | #1 Digital Marketplace in Africa',
+    title: 'dwam | #1 Digital Marketplace in Africa',
     description: 'Sell courses, communities & software. Get paid instantly via Momo, Card, or Crypto.',
-    url: 'https://dwom.store',
-    siteName: 'dwom',
+    url: 'https://dwam.store',
+    siteName: 'dwam',
     images: [
       {
         url: '/login_hero.png',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'dwom | #1 Digital Marketplace in Africa',
+    title: 'dwam | #1 Digital Marketplace in Africa',
     description: 'Sell courses, communities & software across Africa. Instant payments.',
     images: ['/login_hero.png'],
   },
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'dwom',
+    title: 'dwam',
   },
 };
 

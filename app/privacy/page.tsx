@@ -9,13 +9,13 @@ export default function PrivacyPage() {
             <p className={styles.updated}>Last updated: January 18, 2026</p>
             <p className={styles.lawBanner}>
                 This Privacy Policy is prepared in accordance with the <strong>Data Protection Act, 2012 (Act 843)</strong> of
-                the Republic of Ghana. dwom is registered as a data controller with the Data Protection Commission of Ghana.
+                the Republic of Ghana. dwam is registered as a data controller with the Data Protection Commission of Ghana.
             </p>
 
             <section className={styles.section}>
                 <h2>1. Introduction</h2>
                 <p>
-                    dwom (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is committed to protecting your personal data and respecting your privacy.
+                    dwam (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is committed to protecting your personal data and respecting your privacy.
                     This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you
                     use our digital marketplace platform.
                 </p>
@@ -25,9 +25,9 @@ export default function PrivacyPage() {
                 <h2>2. Data Controller</h2>
                 <p>For the purposes of the Data Protection Act, 2012 (Act 843), the data controller is:</p>
                 <ul className={styles.contactList}>
-                    <li><strong>Company:</strong> dwom</li>
+                    <li><strong>Company:</strong> dwam</li>
                     <li><strong>Location:</strong> Accra, Ghana</li>
-                    <li><strong>Email:</strong> privacy@dwom.store</li>
+                    <li><strong>Email:</strong> privacy@dwam.store</li>
                 </ul>
             </section>
 
@@ -96,7 +96,7 @@ export default function PrivacyPage() {
                     <li><strong>Right to Data Portability:</strong> Request transfer of your data</li>
                     <li><strong>Right to Withdraw Consent:</strong> Withdraw consent at any time</li>
                 </ul>
-                <p>To exercise any of these rights, contact us at <strong>privacy@dwom.store</strong>. We will respond within 30 days.</p>
+                <p>To exercise any of these rights, contact us at <strong>privacy@dwam.store</strong>. We will respond within 30 days.</p>
             </section>
 
             <section className={styles.section}>
@@ -131,7 +131,7 @@ export default function PrivacyPage() {
                 <h2>11. Complaints</h2>
                 <p>If you have concerns about how we handle your personal data, you may:</p>
                 <ul>
-                    <li>Contact our Data Protection Officer at privacy@dwom.store</li>
+                    <li>Contact our Data Protection Officer at privacy@dwam.store</li>
                     <li>Lodge a complaint with the Data Protection Commission of Ghana at www.dataprotection.org.gh</li>
                 </ul>
             </section>
@@ -139,8 +139,8 @@ export default function PrivacyPage() {
             <section className={styles.section}>
                 <h2>12. Contact Us</h2>
                 <ul className={styles.contactList}>
-                    <li><strong>Email:</strong> privacy@dwom.store</li>
-                    <li><strong>General Support:</strong> support@dwom.store</li>
+                    <li><strong>Email:</strong> privacy@dwam.store</li>
+                    <li><strong>General Support:</strong> support@dwam.store</li>
                     <li><strong>Address:</strong> Accra, Ghana</li>
                 </ul>
             </section>

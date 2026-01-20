@@ -7,15 +7,15 @@ const faqs = [
         category: 'Getting Started',
         questions: [
             {
-                q: 'How do I create an account on Dwom?',
+                q: 'How do I create an account on Dwam?',
                 a: 'Click "Sign Up" at the top of the page, enter your email and create a password. You can also sign up with your Google account for faster access.'
             },
             {
-                q: 'Is Dwom free to use?',
+                q: 'Is Dwam free to use?',
                 a: 'Yes! Creating an account and buying products is completely free. Sellers pay a small commission (10%) only when they make a sale. No upfront costs.'
             },
             {
-                q: 'What can I sell on Dwom?',
+                q: 'What can I sell on Dwam?',
                 a: 'You can sell digital products like online courses, ebooks, templates, software, music, art, and more. Physical products are coming soon!'
             },
         ]
@@ -49,8 +49,8 @@ const faqs = [
                 a: 'Go to your Dashboard and click "Become a Seller". Fill out your store details, add your payout information, and start creating products!'
             },
             {
-                q: 'What is Dwom Pro?',
-                a: 'Dwom Pro is our premium seller plan that reduces platform fees, provides priority support, advanced analytics, and a verified badge on your products.'
+                q: 'What is Dwam Pro?',
+                a: 'Dwam Pro is our premium seller plan that reduces platform fees, provides priority support, advanced analytics, and a verified badge on your products.'
             },
             {
                 q: 'How do I create discount codes?',
@@ -95,7 +95,7 @@ export default function FAQPage() {
         <div className={styles.container}>
             <header className={styles.header}>
                 <h1><HelpCircle size={36} /> Help Center</h1>
-                <p>Find answers to common questions about Dwom</p>
+                <p>Find answers to common questions about Dwam</p>
 
                 <div className={styles.searchBox}>
                     <Search size={20} />
@@ -139,7 +139,7 @@ export default function FAQPage() {
 
                         <a href="mailto:support@dwom.store" className={styles.emailLink}>
                             <Mail size={16} />
-                            support@dwom.store
+                            support@dwam.store
                         </a>
                     </div>
 

@@ -23,7 +23,7 @@ const defaultStories: Story[] = [
         id: '1',
         name: 'Kofi Mensah',
         role: 'Tech Educator',
-        quote: 'I went from teaching 20 students locally to reaching 5,000+ across Africa. dwom made it possible to earn in my sleep!',
+        quote: 'I went from teaching 20 students locally to reaching 5,000+ across Africa. dwam made it possible to earn in my sleep!',
         revenue: 'GH₵45,000/month',
         country: 'Ghana',
         flag: '🇬🇭'
@@ -41,7 +41,7 @@ const defaultStories: Story[] = [
         id: '3',
         name: 'David Mwangi',
         role: 'Software Developer',
-        quote: 'Selling my templates on dwom changed everything. Now I focus on creating while the platform handles payments.',
+        quote: 'Selling my templates on dwam changed everything. Now I focus on creating while the platform handles payments.',
         revenue: 'KES 800K/month',
         country: 'Kenya',
         flag: '🇰🇪'
@@ -50,7 +50,7 @@ const defaultStories: Story[] = [
         id: '4',
         name: 'Fatima Diallo',
         role: 'Language Teacher',
-        quote: 'From teaching French in my living room to having students in 12 countries. dwom opened doors I never imagined.',
+        quote: 'From teaching French in my living room to having students in 12 countries. dwam opened doors I never imagined.',
         revenue: 'XOF 3M/month',
         country: 'Senegal',
         flag: '🇸🇳'
@@ -97,7 +97,7 @@ export default function SuccessStories({ stories = defaultStories }: Props) {
                         color: 'white',
                         marginBottom: '12px'
                     }}>
-                        Creators Winning on dwom
+                        Creators Winning on dwam
                     </h2>
                     <p style={{
                         color: '#94a3b8',

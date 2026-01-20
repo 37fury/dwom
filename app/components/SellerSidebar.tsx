@@ -79,7 +79,7 @@ export default function SellerSidebar() {
                 {/* Logo */}
                 <Link href="/" className={styles.logoLink} onClick={() => setIsMobileOpen(false)}>
                     <div className={styles.logoContainer}>
-                        <span className={styles.logoText}>dwom</span>
+                        <span className={styles.logoText}>dwam</span>
                         <span className={styles.sellerBadge}>seller</span>
                     </div>
                 </Link>

@@ -1,12 +1,12 @@
 export const EmailTemplates = {
     welcome: (name: string) => `
         <div style="font-family: Arial, sans-serif; color: #333; padding: 20px;">
-            <h1 style="color: #ff5f00;">Welcome to dwom! 🚀</h1>
+            <h1 style="color: #ff5f00;">Welcome to dwam! 🚀</h1>
             <p>Hi ${name},</p>
             <p>We are thrilled to have you join the premier digital marketplace for Africa.</p>
             <p>Here you can sell courses, software, communities, and get paid instantly.</p>
             <br/>
-            <a href="https://dwom.com/dashboard" style="background: #ff5f00; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Go to Dashboard</a>
+            <a href="https://dwam.com/dashboard" style="background: #ff5f00; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Go to Dashboard</a>
         </div>
     `,
     orderConfirmation: (productName: string, amount: number, currency: string) => `
@@ -16,7 +16,7 @@ export const EmailTemplates = {
             <p>Total: <strong>${amount} ${currency}</strong></p>
             <br/>
             <p>You can access your product in your dashboard.</p>
-            <a href="https://dwom.com/dashboard/memberships" style="background: #15803d; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">View My Products</a>
+            <a href="https://dwam.com/dashboard/memberships" style="background: #15803d; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">View My Products</a>
         </div>
     `,
     payoutApproved: (amount: number, currency: string) => `
@@ -43,7 +43,7 @@ export const EmailTemplates = {
                 <li>Request payouts to your bank or mobile money</li>
                 <li>Access all seller features</li>
             </ul>
-            <a href="https://dwom.com/dashboard/seller" style="background: #15803d; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Go to Seller Dashboard</a>
+            <a href="https://dwam.com/dashboard/seller" style="background: #15803d; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Go to Seller Dashboard</a>
         </div>
     `,
     kycRejected: (name: string, reason?: string) => `
@@ -53,7 +53,7 @@ export const EmailTemplates = {
             <p>Unfortunately, we couldn't verify your seller account at this time.</p>
             ${reason ? `<p>Reason: ${reason}</p>` : ''}
             <p>Please re-submit your verification documents.</p>
-            <a href="https://dwom.com/dashboard/settings/kyc" style="background: #ff5f00; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Re-submit Documents</a>
+            <a href="https://dwam.com/dashboard/settings/kyc" style="background: #ff5f00; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Re-submit Documents</a>
         </div>
     `,
     passwordReset: (resetUrl: string) => `

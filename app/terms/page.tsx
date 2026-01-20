@@ -15,9 +15,9 @@ export default function TermsPage() {
             <section className={styles.section}>
                 <h2>1. Introduction and Acceptance</h2>
                 <p>
-                    Welcome to dwom (&quot;Company&quot;, &quot;we&quot;, &quot;our&quot;, &quot;us&quot;), a digital marketplace platform registered and operating
+                    Welcome to dwam (&quot;Company&quot;, &quot;we&quot;, &quot;our&quot;, &quot;us&quot;), a digital marketplace platform registered and operating
                     under the laws of the Republic of Ghana. These Terms of Service (&quot;Terms&quot;) constitute a legally binding
-                    agreement between you and dwom, governing your access to and use of our website at dwom.store and all
+                    agreement between you and dwam, governing your access to and use of our website at dwam.store and all
                     related services (collectively, the &quot;Service&quot;).
                 </p>
                 <p>
@@ -62,7 +62,7 @@ export default function TermsPage() {
                     <strong>Your Data Rights:</strong> Under the Data Protection Act, you have the right to access, correct, delete,
                     object to processing, withdraw consent, and lodge complaints with the Data Protection Commission.
                 </p>
-                <p>For data protection inquiries, contact our Data Protection Officer at privacy@dwom.store</p>
+                <p>For data protection inquiries, contact our Data Protection Officer at privacy@dwam.store</p>
             </section>
 
             <section className={styles.section}>
@@ -157,7 +157,7 @@ export default function TermsPage() {
             <section className={styles.section}>
                 <h2>12. Limitation of Liability</h2>
                 <p>
-                    To the maximum extent permitted by Ghanaian law, dwom acts as an intermediary platform and is not liable for
+                    To the maximum extent permitted by Ghanaian law, dwam acts as an intermediary platform and is not liable for
                     transactions between users. Our liability shall not exceed the fees paid by you in the 12 months preceding the claim.
                 </p>
             </section>
@@ -177,14 +177,14 @@ export default function TermsPage() {
                 <h2>14. Contact Information</h2>
                 <p>For questions about these Terms:</p>
                 <ul className={styles.contactList}>
-                    <li><strong>Email:</strong> support@dwom.store</li>
-                    <li><strong>Data Protection:</strong> privacy@dwom.store</li>
+                    <li><strong>Email:</strong> support@dwam.store</li>
+                    <li><strong>Data Protection:</strong> privacy@dwam.store</li>
                     <li><strong>Address:</strong> Accra, Ghana</li>
                 </ul>
             </section>
 
             <div className={styles.footer}>
-                <p>By using dwom, you acknowledge that you have read and understood these Terms of Service and agree to be bound by them.</p>
+                <p>By using dwam, you acknowledge that you have read and understood these Terms of Service and agree to be bound by them.</p>
                 <div className={styles.links}>
                     <Link href="/privacy">Privacy Policy</Link>
                     <Link href="/faq">FAQ / Help</Link>

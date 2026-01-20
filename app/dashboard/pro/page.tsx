@@ -76,9 +76,9 @@ export default function ProPage() {
                 <div className={styles.heroIcon}>
                     <Crown size={40} />
                 </div>
-                <h1 className={styles.title}>Upgrade to dwom Pro</h1>
+                <h1 className={styles.title}>Upgrade to dwam Pro</h1>
                 <p className={styles.subtitle}>
-                    Get exclusive benefits, save money on every purchase, and unlock the full power of dwom.
+                    Get exclusive benefits, save money on every purchase, and unlock the full power of dwam.
                 </p>
             </div>
 

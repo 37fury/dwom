@@ -1,6 +1,6 @@
 {
-    "name": "dwom Marketplace",
-    "short_name": "dwom",
+    "name": "dwam Marketplace",
+    "short_name": "dwam",
     "description": "The digital marketplace for African creators.",
     "start_url": "/",
     "display": "standalone",

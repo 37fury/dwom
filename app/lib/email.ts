@@ -4,7 +4,7 @@ import { Resend } from 'resend';
 const resendApiKey = process.env.RESEND_API_KEY;
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
-const FROM_EMAIL = 'dwom <noreply@dwom.store>';
+const FROM_EMAIL = 'dwam <noreply@dwam.store>';
 
 // Email templates
 const templates = {
@@ -19,7 +19,7 @@ const templates = {
         html: `
             <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
                 <div style="text-align: center; margin-bottom: 32px;">
-                    <h1 style="color: #f97316; font-size: 28px; margin: 0;">dwom</h1>
+                    <h1 style="color: #f97316; font-size: 28px; margin: 0;">dwam</h1>
                 </div>
                 <div style="background: #1e293b; border-radius: 16px; padding: 32px; color: white;">
                     <h2 style="margin: 0 0 16px; font-size: 20px;">Hey ${data.buyerName}! 👋</h2>
@@ -35,7 +35,7 @@ const templates = {
                     </div>
                     ${data.downloadLink ? `<a href="${data.downloadLink}" style="display: block; text-align: center; background: linear-gradient(135deg, #f97316, #ea580c); color: white; text-decoration: none; padding: 16px 32px; border-radius: 12px; font-weight: 600;">Access Your Purchase →</a>` : ''}
                 </div>
-                <p style="color: #64748b; font-size: 13px; text-align: center; margin-top: 32px;">Need help? Visit <a href="https://dwom.store" style="color: #f97316;">dwom.store</a></p>
+                <p style="color: #64748b; font-size: 13px; text-align: center; margin-top: 32px;">Need help? Visit <a href="https://dwam.store" style="color: #f97316;">dwam.store</a></p>
             </div>
         `,
     }),
@@ -54,7 +54,7 @@ const templates = {
         html: `
             <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
                 <div style="text-align: center; margin-bottom: 32px;">
-                    <h1 style="color: #f97316; font-size: 28px; margin: 0;">dwom</h1>
+                    <h1 style="color: #f97316; font-size: 28px; margin: 0;">dwam</h1>
                 </div>
                 <div style="background: #1e293b; border-radius: 16px; padding: 32px; color: white;">
                     <h2 style="margin: 0 0 16px; font-size: 20px;">Hey ${data.sellerName}! 👋</h2>
@@ -78,11 +78,11 @@ const templates = {
         plan: 'monthly' | 'annual';
         expiresAt: string;
     }) => ({
-        subject: `👑 Welcome to dwom Pro!`,
+        subject: `👑 Welcome to dwam Pro!`,
         html: `
             <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
                 <div style="text-align: center; margin-bottom: 32px;">
-                    <h1 style="color: #f97316; font-size: 28px; margin: 0;">dwom</h1>
+                    <h1 style="color: #f97316; font-size: 28px; margin: 0;">dwam</h1>
                 </div>
                 <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 16px; padding: 32px; color: white; text-align: center;">
                     <div style="font-size: 48px; margin-bottom: 16px;">👑</div>
@@ -97,7 +97,7 @@ const templates = {
                             <li>Priority support</li>
                         </ul>
                     </div>
-                    <a href="https://dwom.store/dashboard" style="display: inline-block; background: linear-gradient(135deg, #f97316, #ea580c); color: white; text-decoration: none; padding: 16px 32px; border-radius: 12px; font-weight: 600;">Go to Dashboard →</a>
+                    <a href="https://dwam.store/dashboard" style="display: inline-block; background: linear-gradient(135deg, #f97316, #ea580c); color: white; text-decoration: none; padding: 16px 32px; border-radius: 12px; font-weight: 600;">Go to Dashboard →</a>
                 </div>
             </div>
         `,
@@ -113,7 +113,7 @@ const templates = {
         html: `
             <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
                 <div style="text-align: center; margin-bottom: 32px;">
-                    <h1 style="color: #f97316; font-size: 28px; margin: 0;">dwom</h1>
+                    <h1 style="color: #f97316; font-size: 28px; margin: 0;">dwam</h1>
                 </div>
                 <div style="background: #1e293b; border-radius: 16px; padding: 32px; color: white;">
                     <h2 style="margin: 0 0 16px; font-size: 20px;">Congratulations, ${data.sellerName}! 🎉</h2>
@@ -123,7 +123,7 @@ const templates = {
                         <p style="margin: 16px 0 0; font-size: 28px; font-weight: 700; color: #22c55e;">${data.amount}</p>
                         <p style="margin: 8px 0 0; color: #94a3b8; font-size: 14px;">by ${data.buyerName}</p>
                     </div>
-                    <a href="https://dwom.store/dashboard/seller" style="display: block; text-align: center; background: linear-gradient(135deg, #f97316, #ea580c); color: white; text-decoration: none; padding: 16px 32px; border-radius: 12px; font-weight: 600;">View Dashboard →</a>
+                    <a href="https://dwam.store/dashboard/seller" style="display: block; text-align: center; background: linear-gradient(135deg, #f97316, #ea580c); color: white; text-decoration: none; padding: 16px 32px; border-radius: 12px; font-weight: 600;">View Dashboard →</a>
                 </div>
             </div>
         `,
